@@ -72,7 +72,7 @@ Throughout your project, keep track of your Time Invested and Actual Time and up
 | Mobile | L | 1.5 hrs |
 | Optional Search | L | 1hr |
 
-| Total | H | 27.5 hrs| 
+| Total | | 27.5 hrs| 2 hrs
 
 ## Code Snippet
 
