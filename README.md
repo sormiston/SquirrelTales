@@ -6,7 +6,7 @@ SquirrelTales - deep thoughts and slices of life from the Central Park Squirrel 
 
 ## Project Description
 
-This project aims to offer a nostalgic and upbeat portrait of civic life by presenting the written words of the 2018 Central Park Squirrel volunteer Census-takers in a thoughtfully presentable interface.  These will be a casual "fortune cookie" style random fetch reader, with a few data parameters translated over as context (geographic hectare grid light-up over a static map image, toggle icons indicated AM or PM stories.)  It is hoped that the tone of these anonymous reflections will invite the user to employ an active imagination and access positive recollections of nature, community, and Central Park itself. 
+This project aims to offer a nostalgic and upbeat portrait of civic life by presenting the written words of the 2018 Central Park Squirrel volunteer Census-takers in a thoughtfully presentable interface.  It is hoped that the tone of these anonymous reflections will invite the user to employ an active imagination and access positive recollections of nature, community, and Central Park itself. 
 
 ## API and Data Sample
 
@@ -23,24 +23,19 @@ NYC Open Data 2018 Squirrel Census - Stories -- URL: https://data.cityofnewyork.
 
 ## Wireframes
 
-Upload images of your wireframes to an image hosting site or add them to an assets folder in your repo and link them here with a description of each specific wireframe.
+LINK HERE: https://wireframe.cc/pro/pp/0126f4a23358513
 
 ### MVP/PostMVP
 
-The functionality will then be divided into two separate lists: MPV and PostMVP.  Carefully decided what is placed into your MVP as the client will expect this functionality to be implemented upon project completion.  
-
 #### MVP 
-*These are examples only. Replace with your own MVP features.*
-
-- Find and use external api 
-- Render data on page 
-- Allow user to choose favorites 
+- Fetch render and display random stories from API JSON data through a clickable button
+- Display contextual information in an icon bar on top of entry: date of entry, toggle between lluminating either a day or moon icon to indicate, AM or PM shift
+- JS logic will display a static image of either north or southern half of Central Park depending.
+  + CSS Grid will overlay the map and illuminate the relevant hectare mentioned in the story
 
 #### PostMVP  
-*These are examples only. Replace with your own Post-MVP features.*
+- Optional search term select random entry from a filtered pool
 
-- Add second API
-- Use local storage to save user favorites
 
 ## Project Schedule
 
@@ -87,4 +82,3 @@ Lines 2 and 3 create the dynamic HTML and append to DOM, respectively.
 
 ## Change Log
  Use this section to document what changes were made and the reasoning behind those changes.  
-
