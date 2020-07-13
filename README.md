@@ -29,15 +29,16 @@ LINK HERE: https://wireframe.cc/pro/pp/0126f4a23358513
 
 #### MVP 
 - Fetch, sanitize, and display random stories from API JSON data through a clickable button
-- Display contextual information in an icon bar on top of entry: date of entry, toggle between lluminating either a day or moon icon to indicate, AM or PM shift
+- Display contextual information in an icon bar: date of entry, toggle between lluminating either a day or moon icon to indicate, AM or PM shift
 - JS logic will display a static image of either north or southern half of Central Park depending.
   + CSS Grid will overlay the map and illuminate the relevant hectare mentioned in the story
 
 #### PostMVP  
-- Optional search term to select random entry from a pre-filtered pool
-- Animated scroll out of main story display.  Icon Bar and Generate Button will sit on top of one another - on click, these divs will part to create the display space.
-- Staggered fade in or typewriter effect to render text on the story display space
+
+- Advanced animations to "slow down" UX of the app, like a scroll-out of main story display.  Icon Bar and Generate Button will sit on top of one another - on click, these divs will part to create the display space.
+- Staggered fade-in or typewriter effect of text rednering on to story display space
 - Mobile version
+- Optional search term to select random entry from a pre-filtered pool
 
 ## Project Schedule
 
@@ -56,9 +57,7 @@ LINK --    https://git.generalassemb.ly/SeanOrmiston/SquirrelTales/blob/master/p
 
 ## Timeframes
 
-Tell us how long you anticipate spending on each area of development. Be sure to consider how many hours a day you plan to be coding and how many days you have available until presentation day.
-
-Time frames are also key in the development cycle.  You have limited time to code all phases of the game.  Your estimates can then be used to evalute game possibilities based on time needed and the actual time you have before game must be submitted. It's always best to pad the time by a few hours so that you account for the unknown so add and additional hour or two to each component to play it safe. Throughout your project, keep track of your Time Invested and Actual Time and update your README regularly.
+Throughout your project, keep track of your Time Invested and Actual Time and update your README regularly.
 
 | Component | Priority | Estimated Time | Time Invested | Actual Time |
 | --- | :---: |  :---: | :---: | :---: |
