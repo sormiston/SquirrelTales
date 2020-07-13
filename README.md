@@ -62,7 +62,7 @@ Throughout your project, keep track of your Time Invested and Actual Time and up
 | Component | Priority | Estimated Time | Time Invested | Actual Time |
 | --- | :---: |  :---: | :---: | :---: |
 | HTML Mockup | H | 1.5 hrs |
-| Working with API | H | 2 hrs | 
+| Working with API | H | 3 hrs | 2 hrs
 | Basic Story Display | H | 3 hrs |
 | Map: JS+Grid integration | H | 5 hrs |
 | Basic CSS | L | 2 hrs |
