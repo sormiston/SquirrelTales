@@ -52,7 +52,7 @@ LINK HERE: https://wireframe.cc/pro/pp/0126f4a23358513
 
 ## Priority Matrix
 
-Include a full list of features that have been prioritized based on the `Time and Importance` Matrix.  Link this image in a similar manner to your wireframes
+LINK --    https://git.generalassemb.ly/SeanOrmiston/SquirrelTales/blob/master/priority%20matrix.pdf
 
 ## Timeframes
 
