@@ -1,0 +1,29 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  text-align: center;
+  border: 1px dotted black;
+  margin: 1rem;
+}
+
+#story-area {
+  padding-top: 2%;
+  width: 600px;
+  height: 300px;
+  margin: 0 auto;
+  border: 1px dotted black;
+}
+
+
+#map-view {
+  width: 600px;
+  height: 250px;
+  border: 1px dotted black;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 620px) {
+
+} 
