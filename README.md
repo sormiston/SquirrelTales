@@ -30,14 +30,14 @@ LINK HERE: https://wireframe.cc/pro/pp/0126f4a23358513
 #### MVP 
 - Fetch, sanitize, and display random stories from API JSON data through a clickable button
 - Display contextual information in an icon bar: date of entry, toggle between lluminating either a day or moon icon to indicate, AM or PM shift
+- Mobile design styling of at least one Media Query
 
 #### PostMVP  
 
 - JS logic will display a static image of either north or southern half of Central Park depending.
   + CSS Grid will overlay the map and illuminate the relevant hectare mentioned in the story
 - Advanced animations to "slow down" UX of the app, like a scroll-out of main story display.  Icon Bar and Generate Button will sit on top of one another - on click, these divs will part to create the display space.
-- Staggered fade-in or typewriter effect of text rednering on to story display space
-- Mobile version
+- Staggered fade-in or typewriter effect of text rendering to story display space
 - Optional search term to select random entry from a pre-filtered pool
 
 ## Project Schedule
