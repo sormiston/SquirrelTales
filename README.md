@@ -28,14 +28,14 @@ LINK HERE: https://wireframe.cc/pro/pp/0126f4a23358513
 ### MVP/PostMVP
 
 #### MVP 
-- Fetch render and display random stories from API JSON data through a clickable button
+- Fetch, sanitize, and display random stories from API JSON data through a clickable button
 - Display contextual information in an icon bar on top of entry: date of entry, toggle between lluminating either a day or moon icon to indicate, AM or PM shift
 - JS logic will display a static image of either north or southern half of Central Park depending.
   + CSS Grid will overlay the map and illuminate the relevant hectare mentioned in the story
 
 #### PostMVP  
-- Optional search term select random entry from a filtered pool
-- Animated scroll out of entry text.  Icon Bar and Generate Button will sit on top of one another - on click, these divs will part to create the display space.
+- Optional search term to select random entry from a pre-filtered pool
+- Animated scroll out of main story display.  Icon Bar and Generate Button will sit on top of one another - on click, these divs will part to create the display space.
 - Staggered fade in or typewriter effect to render text on the story display space
 - Mobile version
 
