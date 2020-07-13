@@ -77,7 +77,7 @@ Throughout your project, keep track of your Time Invested and Actual Time and up
 ## Code Snippet
 
 Comfortable text readability is an important part of this project.  This code replaces the JS newline literals that are littered throughout
-the story strings with HTML &lt;br&#47;&rt; tags to preserve the intended flow of the entry.  Where a story string has been gotten from object and assigned to variable ```text``` ...
+the story strings with HTML &lt;br&#47;&gt; tags to preserve the intended flow of the entry.  Where a story string has been gotten from object and assigned to variable ```text``` ...
 ```
 text = text.replaceAll('\n','<br/>')
 text = `<p>${text}</p>`
