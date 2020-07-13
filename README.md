@@ -62,9 +62,18 @@ Time frames are also key in the development cycle.  You have limited time to cod
 
 | Component | Priority | Estimated Time | Time Invested | Actual Time |
 | --- | :---: |  :---: | :---: | :---: |
-| Adding Form | H | 3hrs| 3.5hrs | 3.5hrs |
-| Working with API | H | 3hrs| 2.5hrs | 2.5hrs |
-| Total | H | 6hrs| 5hrs | 5hrs |
+| HTML Mockup | H | 1.5 hrs |
+| Working with API | H | 2 hrs | 
+| Basic Story Display | H | 3 hrs |
+| Map: JS+Grid integration | H | 5 hrs |
+| Basic CSS | L | 2 hrs |
+| Map: DOM integration | H | 4 hrs |
+| Adv. Styling | M | 6 hrs
+| Flavor text + footer | M | 1.5 hrs
+| Mobile | L | 1.5 hrs |
+| Optional Search | L | 1hr |
+
+| Total | H | 27.5 hrs| 
 
 ## Code Snippet
 
