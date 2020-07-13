@@ -6,7 +6,7 @@ SquirrelTales - deep thoughts and slices of life from the Central Park Squirrel 
 
 ## Project Description
 
-This project aims to offer a nostalgic and upbeat portrait of civic life by presenting the written words of the 2018 Central Park Squirrel volunteer Census-takers in a thoughtfully presentable interface.  It is hoped that the tone of these anonymous reflections will invite the user to employ an active imagination and access positive recollections of nature, community, and Central Park itself. 
+This project aims to offer a nostalgic and upbeat portrait of civic life by presenting the written words of the 2018 Central Park Squirrel volunteer Census-takers in a thoughtfully presentable interface.  These will be a casual "fortune cookie" style random fetch reader, with a few data parameters translated over as context (geographic hectare grid light-up over a static map image, toggle icons indicated AM or PM stories.)  It is hoped that the tone of these anonymous reflections will invite the user to employ an active imagination and access positive recollections of nature, community, and Central Park itself. 
 
 ## API and Data Sample
 
