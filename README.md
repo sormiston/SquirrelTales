@@ -35,23 +35,20 @@ LINK HERE: https://wireframe.cc/pro/pp/0126f4a23358513
 
 #### PostMVP  
 - Optional search term select random entry from a filtered pool
-
+- Animated scroll out of entry text.  Icon Bar and Generate Button will sit on top of one another - on click, these divs will part to create the display space.
+- Staggered fade in or typewriter effect to render text on the story display space
+- Mobile version
 
 ## Project Schedule
 
-This schedule will be used to keep track of your progress throughout the week and align with our expectations.  
-
-You are **responsible** for scheduling time with your squad to seek approval for each deliverable by the end of the corresponding day, excluding `Saturday` and `Sunday`.
-
 |  Day | Deliverable | Status
 |---|---| ---|
-|July 10-12| Prompt / Wireframes / Priority Matrix / Timeframes | Incomplete
-|July 13| Project Approval | Incomplete
-|July 13| Core Application Structure (HTML, CSS, etc.) | Incomplete
-|July 14| Pseudocode / actual code | Incomplete
-|July 15| Initial Clickable Model  | Incomplete
-|July 16| MVP | Incomplete
-|July 17| Presentations | Incomplete
+|July 13| Project Approval; HTML Mock-up & JS to store API data params to local variables | Incomplete
+|July 14| Main dynamic display and icon bar integration; working CSS Grid model | Incomplete | 
+|July 15| Basic CSS layout and style; Sizing and placement of static map with Grid overlay; remaining time adv style modeling| Incomplete
+|July 16| Text copy + footer w/ external links; ON NEW BRANCH: media queries for mobile; adv. styling as time allows | Incomplete
+|July 17| Merge for successful advanced stylings if applicable; Presentations| Incomplete
+
 
 ## Priority Matrix
 
