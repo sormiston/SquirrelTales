@@ -1,6 +1,8 @@
 
 const apiData = 'https://data.cityofnewyork.us/resource/gfqj-f768.json'
-let storyArea = document.querySelector('#story-area')
+const storyArea = document.querySelector('#story-area')
+const dayIcon = document.querySelector('.fa-sun')
+const niteIcon = document.querySelector('.fa-moon')
 
 let aLocalData = []
 let oSelected = {}
@@ -56,7 +58,7 @@ function fadeText() {
   console.log('fade text called')
   let i = 0
   let time = setInterval(() => {
-    console.log(storyArea)
+    console.log(`Story Area timed render: ${storyArea.children[i]} at index ${i} of length ${storyArea.children.length}`)
     if (i == storyArea.children.length) {
       clearInterval(time)
     } else {
@@ -112,6 +114,21 @@ function renderIconBar() {
       }
   }
   const shift = oSelected.shift
-
+  console.log(dayIcon.classList)
   
+  switch (shift) {
+    case 'AM':
+      if (!dayIcon.classList.contains('activated')) dayIcon.classList.add('activated')
+      if (niteIcon.classList.contains('activated')) niteIcon.classList.remove('activated')
+      break
+    case 'PM':
+      if (!niteIcon.classList.contains('activated')) niteIcon.classList.add('activated')
+      if (dayIcon.classList.contains('activated')) dayIcon.classList.remove('activated')
+      break
+    default:
+      console.error('Shift icon logic error')
+  }
+
+
+
   }
