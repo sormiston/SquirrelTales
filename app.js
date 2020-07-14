@@ -32,6 +32,9 @@ function randomFetch() {
 
 function renderStory() {
   clearStory()
+
+  renderIconBar()
+
   let text = oSelected.note_squirrel_park_stories
 
   let regex = /\.\s/g
@@ -67,3 +70,46 @@ function clearStory() {
     storyArea.removeChild(storyArea.lastChild)
   }
 }
+
+function renderIconBar() {
+  let sMonth = 'October'
+  let sDay = oSelected.date.slice(2, 4)
+  let sYear = oSelected.date.slice(4)
+  let sDayOfWeek = undefined
+  console.log(sDay)
+  switch (sDay % 7) {
+    case 0: {
+      let sDayOfWeek = 'Sunday'
+      break
+    }
+    case 1: {
+      let sDayOfWeek = 'Monday'
+      break
+    }
+    case 2: {
+      let sDayOfWeek = 'Tuesday'
+      break
+    }
+    case 3: {
+      let sDayOfWeek = 'Wednesday'
+      break
+    }
+    case 4: {
+      let sDayOfWeek = 'Thursday'
+      break
+    }
+    case 5: {
+      let sDayOfWeek = 'Friday'
+      break
+    }
+    case 6: {
+      let sDayOfWeek = 'Saturday'
+      break
+    }
+    default: {
+      console.log('day-of-week parse error')
+      break
+      }
+  }
+  console.log(`${sDayOfWeek}, ${sMonth} ${sDay}, ${sYear}`)
+  }
