@@ -1,6 +1,6 @@
 
 const apiData = 'https://data.cityofnewyork.us/resource/gfqj-f768.json'
-// const storyArea = document.querySelector('#story-area')
+let storyArea = document.querySelector('#story-area')
 
 let aLocalData = []
 let oSelected = {}
@@ -29,6 +29,7 @@ function randomFetch() {
   renderStory()
 }
 
+
 function renderStory() {
   clearStory()
   let text = oSelected.note_squirrel_park_stories
@@ -43,7 +44,7 @@ function renderStory() {
     let newText = textLines[i]
     newP.classList.add('hidden')
     newP.innerText = newText
-    document.querySelector('#story-area').append(newP)
+    storyArea.append(newP)
   }
   fadeText()
 }
@@ -52,17 +53,17 @@ function fadeText() {
   console.log('fade text called')
   let i = 0
   let time = setInterval(() => {
-    console.log(document.querySelector('#story-area'))
-    if (i == document.querySelector('#story-area').children.length) {
+    console.log(storyArea)
+    if (i == storyArea.children.length) {
       clearInterval(time)
     } else {
-      document.querySelector('#story-area').children[i].classList.remove('hidden')
+      storyArea.children[i].classList.remove('hidden')
       i++;
     }
   }, 700)
 }
 function clearStory() {
-  while (document.querySelector('#story-area').lastChild) {
-    document.querySelector('#story-area').removeChild(document.querySelector('#story-area').lastChild)
+  while (storyArea.lastChild) {
+    storyArea.removeChild(storyArea.lastChild)
   }
 }
