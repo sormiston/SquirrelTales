@@ -72,11 +72,11 @@ function clearStory() {
 }
 
 function renderIconBar() {
-  let sMonth = 'October'
-  let sDay = oSelected.date.slice(2, 4)
-  let sYear = oSelected.date.slice(4)
-  let sDayOfWeek = undefined
-  console.log(sDay)
+  const sMonth = 'October'
+  const sDay = oSelected.date.slice(2, 4)
+  const sYear = oSelected.date.slice(4)
+  const sDayOfWeek = undefined
+  
   switch (sDay % 7) {
     case 0: {
       let sDayOfWeek = 'Sunday'
@@ -111,5 +111,7 @@ function renderIconBar() {
       break
       }
   }
-  console.log(`${sDayOfWeek}, ${sMonth} ${sDay}, ${sYear}`)
+  const shift = oSelected.shift
+
+  
   }

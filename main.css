@@ -28,12 +28,35 @@ body {
   opacity: 0;
 }
 
+
+
 #map-view {
   width: 600px;
   height: 250px;
   border: 1px dotted black;
   margin: 0 auto;
 }
+.fas {
+  border: 1px solid black;
+  padding: 3px;
+  border-radius: 50%;
+  filter: brightness(50%);
+} 
+
+.fa-sun {
+  color: #FCF300;
+  background-color: #a2d6f9ec; 
+}
+
+.fa-moon {
+  color: #edf2f4;
+  background-color: #457b9d ;
+}
+
+i.activated {
+  filter: brightness(105%);
+}
+
 
 @media screen and (max-width: 620px) {
 
