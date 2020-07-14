@@ -3,6 +3,8 @@ const apiData = 'https://data.cityofnewyork.us/resource/gfqj-f768.json'
 const storyArea = document.querySelector('#story-area')
 const dayIcon = document.querySelector('.fa-sun')
 const niteIcon = document.querySelector('.fa-moon')
+const dateDisplay = document.querySelector('#date')
+const hectareDisplay = document.querySelector('#hectare')
 
 let aLocalData = []
 let oSelected = {}
@@ -77,35 +79,35 @@ function renderIconBar() {
   const sMonth = 'October'
   const sDay = oSelected.date.slice(2, 4)
   const sYear = oSelected.date.slice(4)
-  const sDayOfWeek = undefined
-  
+  let sDayOfWeek = undefined 
+
   switch (sDay % 7) {
     case 0: {
-      let sDayOfWeek = 'Sunday'
+      sDayOfWeek = 'Sunday'
       break
     }
     case 1: {
-      let sDayOfWeek = 'Monday'
+      sDayOfWeek = 'Monday'
       break
     }
     case 2: {
-      let sDayOfWeek = 'Tuesday'
+      sDayOfWeek = 'Tuesday'
       break
     }
     case 3: {
-      let sDayOfWeek = 'Wednesday'
+      sDayOfWeek = 'Wednesday'
       break
     }
     case 4: {
-      let sDayOfWeek = 'Thursday'
+      sDayOfWeek = 'Thursday'
       break
     }
     case 5: {
-      let sDayOfWeek = 'Friday'
+      sDayOfWeek = 'Friday'
       break
     }
     case 6: {
-      let sDayOfWeek = 'Saturday'
+      sDayOfWeek = 'Saturday'
       break
     }
     default: {
@@ -128,7 +130,10 @@ function renderIconBar() {
     default:
       console.error('Shift icon logic error')
   }
-
-
+  const sDateDisplayText = `${sDayOfWeek}, ${sMonth} ${sDay}, ${sYear}`
+  dateDisplay.innerText = sDateDisplayText
+  const sHectare = oSelected.hectare
+  hectareDisplay.innerText = `Hectare ${sHectare}`
 
   }
+ 
