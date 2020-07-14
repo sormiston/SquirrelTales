@@ -30,7 +30,7 @@ function randomFetch() {
 }
 
 function renderStory() {
-
+  clearStory()
   let text = oSelected.note_squirrel_park_stories
 
   let regex = /\.\s/g
@@ -61,8 +61,8 @@ function fadeText() {
     }
   }, 700)
 }
-// function clearStory() {
-//   while (storyArea.lastChild) {
-//     storyArea.removeChild(storyArea.lastChild)
-//   }
-// }
+function clearStory() {
+  while (document.querySelector('#story-area').lastChild) {
+    document.querySelector('#story-area').removeChild(document.querySelector('#story-area').lastChild)
+  }
+}
