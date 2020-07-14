@@ -86,4 +86,5 @@ document.querySelector('#flex-div').insertAdjacentHTML('afterbegin', text)
 Lines 2 and 3 create the dynamic HTML and append to DOM, respectively.
 
 ## Change Log
- Use this section to document what changes were made and the reasoning behind those changes.  
+ COMPATABILITY ISSUES -
+ WIll need workaround to .replaceAll for Chrome compatability.
