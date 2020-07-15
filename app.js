@@ -16,10 +16,12 @@ let oSelected = {}
 let sHectare = undefined
 
 
+dataCall.addEventListener('touchstart', getData)
 dataCall.addEventListener('click', getData)
 
-async function getData() {
+async function getData(e) {
   try {
+    console.log(e)
     const response = await axios.get(apiData)
     for (i = 0; i < response.data.length; i++) {
       aLocalData[i] = response.data[i];
@@ -40,8 +42,6 @@ function randomFetch() {
 
 function renderStory() {
   clearStory()
-
-  renderIconBar()
 
   let text = oSelected.note_squirrel_park_stories
 
@@ -72,6 +72,8 @@ function fadeText() {
       i++;
     }
   }, 700)
+
+  renderIconBar()
 }
 
 function clearStory() {
@@ -147,40 +149,21 @@ function renderMap() {
   while (mapView.lastChild) mapView.removeChild(mapView.lastChild)
   // Hard-coded to select between 2 map halves, each 21 x 9
   let sHectareX = sHectare.substr(0, 2)
-  let sHectareY = sHectare[2]
-  switch (sHectareX <= 21) {
-    case true: {
-      if (!mapView.classList.contains('parkSouth')) mapView.classList.add('parkSouth')
-      if (mapView.classList.contains('parkNorth')) mapView.classList.remove('parkNorth')
-      for (let i = 0; i <= 8; i++) {
-        for (let j = 1; j <= 21; j++) {
-          let newDiv = document.createElement('div')
-          newDiv.id = `${(j.toString()).padStart(2, '0')}${aYAxisLetters[i]}`
-          newDiv.classList.add('hectare')
-          newDiv.innerText = newDiv.id
-          // console.log(newDiv.id)
-          mapView.append(newDiv)
-        }
+    switch (sHectareX <= 21) {
+      case true: {
+        if (!mapView.classList.contains('parkSouth')) mapView.classList.add('parkSouth')
+        if (mapView.classList.contains('parkNorth')) mapView.classList.remove('parkNorth')
+        generateGrid(1, 21)
+        break
       }
-      break
+      case false:
+        if (!mapView.classList.contains('parkNorth')) mapView.classList.add('parkNorth')
+        if (mapView.classList.contains('parkSouth')) mapView.classList.remove('parkSouth')
+        generateGrid(22, 42)
+        break
+      default:
+        console.error('Hectare parse error')
     }
-    case false:
-      if (!mapView.classList.contains('parkNorth')) mapView.classList.add('parkNorth')
-      if (mapView.classList.contains('parkSouth')) mapView.classList.remove('parkSouth')
-      for (let i = 0; i <= 8; i++) {
-        for (let j = 22; j <= 42; j++) {
-          let newDiv = document.createElement('div')
-          newDiv.id = `${(j.toString()).padStart(2, '0')}${aYAxisLetters[i]}`
-          newDiv.classList.add('hectare')
-          newDiv.innerText = newDiv.id
-          // console.log(newDiv.id)
-          mapView.append(newDiv)
-        }
-      }
-      break
-    default:
-      console.error('Hectare parse error')
-  }
 
   activateHectare(oSelected.hectare)
 
@@ -189,6 +172,16 @@ function renderMap() {
     hectare.classList.add('activated-grid')
     console.log(hectare)
   }
+  function generateGrid(origin, end) {
+    for (let i = 0; i <= 8; i++) {
+      for (let j = origin; j <= end; j++) {
+        let newDiv = document.createElement('div')
+        newDiv.id = `${(j.toString()).padStart(2, '0')}${aYAxisLetters[i]}`
+        newDiv.classList.add('hectare')
+        newDiv.innerText = newDiv.id
+        // console.log(newDiv.id)
+        mapView.append(newDiv)
+      }
+    }
+  }
 }
-  
- 

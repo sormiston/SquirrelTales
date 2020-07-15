@@ -8,6 +8,9 @@ body {
   margin: 1rem;
 }
 
+button:hover {
+  cursor: pointer;
+}
 #story-area {
   padding-top: 2%;
   margin: 0 auto;
@@ -86,5 +89,10 @@ i.activated {
 
 
 @media screen and (max-width: 1050px) {
-  
+  .map-view {
+    display: none;
+  }
+  #map-context {
+    display: none;
+  }
 } 
