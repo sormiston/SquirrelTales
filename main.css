@@ -58,12 +58,16 @@ div.parkNorth {
   padding-top: 18px;
   font-size: 12px;
   border: 1px dotted lightgray;
-  color: rgb(57, 57, 58, 0.70 )
+  color: rgb(57, 57, 58, 0.80 );
+  visibility: hidden;
 }
 
-.activated-grid {
+.map-view > div.activated-grid {
   background-color: #f48c06;
-  opacity: 50%;
+  opacity: 60%;
+  border: 1px groove sienna;
+  color: white;
+  visibility: visible;
 }
 
 .fas {

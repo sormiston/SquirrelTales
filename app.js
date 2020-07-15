@@ -15,7 +15,6 @@ let aLocalData = []
 let oSelected = {}
 let sHectare = undefined
 
-
 dataCall.addEventListener('touchstart', getData)
 dataCall.addEventListener('click', getData)
 

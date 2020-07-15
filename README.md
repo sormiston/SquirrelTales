@@ -86,12 +86,13 @@ document.querySelector('#flex-div').insertAdjacentHTML('afterbegin', text)
 Lines 2 and 3 create the dynamic HTML and append to DOM, respectively.
 
 ## Change Log
+ 7.15 - 3:32PM - disables display of non-target coordinate grid itmes
+ 
+ 
  COMPATABILITY ISSUES - 
- - Google Chrome 83 & Firefox for Android DO NOT SUPPORT .replaceAll()
+ - Google Chrome 83 & Firefox for Android DO NOT SUPPORT .replaceAll() -- RESOLVED
  - Fetch button must "sleep" while rendering text to prevent user overload
 
- BRANCHES - 
- 
  
 
  ## Optimizations
