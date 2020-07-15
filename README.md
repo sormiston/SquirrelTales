@@ -86,5 +86,14 @@ document.querySelector('#flex-div').insertAdjacentHTML('afterbegin', text)
 Lines 2 and 3 create the dynamic HTML and append to DOM, respectively.
 
 ## Change Log
- COMPATABILITY ISSUES -
- WIll need workaround to .replaceAll for Chrome compatability.
+ COMPATABILITY ISSUES - 
+ - Google Chrome 83 & Firefox for Android DO NOT SUPPORT .replaceAll()
+ - Fetch button must "sleep" while rendering text to prevent user overload
+
+ BRANCHES - 
+ 
+ 
+
+ ## Optimizations
+ - Re-assign dv #map-view as a class to free up CSS specificity for style override - DONE
+ - DRY generation of grid items in renderMap switch statements - DONE

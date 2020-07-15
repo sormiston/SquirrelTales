@@ -44,11 +44,12 @@ function renderStory() {
   clearStory()
 
   let text = oSelected.note_squirrel_park_stories
-
-  let regex = /\.\s/g
-  text = text.replaceAll(".'", "'.<br/>")
-  text = text.replaceAll(regex, ".<br/>")
-  const textLines = text.replaceAll('\n', '<br/>').split('<br/>')
+  const regex1 = /\.\\"/g
+  const regex2 = /\.\s/g
+  const regex3 = /\\n/g
+  text = text.replace(regex1, "'.<br/>")
+  text = text.replace(regex2, ".<br/>")
+  const textLines = text.replace(regex3, '<br/>').split('<br/>')
 
   for (let i = 0; i < textLines.length; i++) {
     let newP = document.createElement('p')
