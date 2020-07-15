@@ -28,8 +28,6 @@ body {
   opacity: 0;
 }
 
-
-
 #map-view {
   display: grid;
   grid-template-columns: repeat(21, 1fr);
@@ -38,8 +36,15 @@ body {
   height: 450px;
   border: 1px dotted black;
   margin: 0 auto;
-  background-image: url(./Public/central-park-South.png);
   background-size: contain;
+}
+
+.parkSouth {
+  background-image: url(./Public/central-park-mapSOUTH.png);
+}
+
+.parkNorth {
+  background-image: url(./Public/central-park-mapNORTH.png);
 }
 .fas {
   border: 1px solid black;

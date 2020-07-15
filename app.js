@@ -7,6 +7,7 @@ const niteIcon = document.querySelector('.fa-moon')
 const dateDisplay = document.querySelector('#date')
 const hectareDisplay = document.querySelector('#hectare')
 const dataCall = document.querySelector('#fetch')
+const mapView = document.querySelector('#map-view')
 
 // local globals established by data fetch
 let aLocalData = []
@@ -136,5 +137,24 @@ function renderIconBar() {
   sHectare = oSelected.hectare
   hectareDisplay.innerText = `Hectare ${sHectare}`
 
+  renderMap()
+}
+  
+function renderMap() {
+  let sHectareX = sHectare.substr(0, 2)
+  let sHectareY = sHectare[2]
+  switch (sHectareX <= 21) {
+    case true:
+      if (!mapView.classList.contains('parkSouth')) mapView.classList.add('parkSouth')
+      if (mapView.classList.contains('parkNorth')) mapView.classList.remove('parkNorth')
+      break
+    case false:
+      if (!mapView.classList.contains('parkNorth')) mapView.classList.add('parkNorth')
+      if (mapView.classList.contains('parkSouth')) mapView.classList.remove('parkSouth')
+      break
+    default:
+      console.error('Hectare parse error')
   }
+}
+  
  
