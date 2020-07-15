@@ -31,10 +31,15 @@ body {
 
 
 #map-view {
-  width: 600px;
-  height: 250px;
+  display: grid;
+  grid-template-columns: repeat(21, 1fr);
+  grid-template-rows: repeat(9, 1fr);
+  width: 1050px;
+  height: 450px;
   border: 1px dotted black;
   margin: 0 auto;
+  background-image: url(./Public/central-park-South.png);
+  background-size: contain;
 }
 .fas {
   border: 1px solid black;

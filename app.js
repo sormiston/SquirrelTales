@@ -1,21 +1,22 @@
 
+// HTML Element and API constants
 const apiData = 'https://data.cityofnewyork.us/resource/gfqj-f768.json'
 const storyArea = document.querySelector('#story-area')
 const dayIcon = document.querySelector('.fa-sun')
 const niteIcon = document.querySelector('.fa-moon')
 const dateDisplay = document.querySelector('#date')
 const hectareDisplay = document.querySelector('#hectare')
+const dataCall = document.querySelector('#fetch')
 
+// local globals established by data fetch
 let aLocalData = []
 let oSelected = {}
+let sHectare = undefined
 
-const elDataCall = document.querySelector('#fetch')
-
-elDataCall.addEventListener('click', getData)
+dataCall.addEventListener('click', getData)
 
 async function getData() {
   try {
-
     const response = await axios.get(apiData)
     for (i = 0; i < response.data.length; i++) {
       aLocalData[i] = response.data[i];
@@ -132,7 +133,7 @@ function renderIconBar() {
   }
   const sDateDisplayText = `${sDayOfWeek}, ${sMonth} ${sDay}, ${sYear}`
   dateDisplay.innerText = sDateDisplayText
-  const sHectare = oSelected.hectare
+  sHectare = oSelected.hectare
   hectareDisplay.innerText = `Hectare ${sHectare}`
 
   }
