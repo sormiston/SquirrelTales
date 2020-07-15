@@ -7,7 +7,7 @@ const niteIcon = document.querySelector('.fa-moon')
 const dateDisplay = document.querySelector('#date')
 const hectareDisplay = document.querySelector('#hectare')
 const dataCall = document.querySelector('#fetch')
-const mapView = document.querySelector('#map-view')
+const mapView = document.querySelector('.map-view')
 
 // local global variables
 const aYAxisLetters = ['A','B','C','D','E','F','G','H','I']
@@ -171,6 +171,7 @@ function renderMap() {
           let newDiv = document.createElement('div')
           newDiv.id = `${(j.toString()).padStart(2, '0')}${aYAxisLetters[i]}`
           newDiv.classList.add('hectare')
+          newDiv.innerText = newDiv.id
           console.log(newDiv.id)
           mapView.append(newDiv)
         }
