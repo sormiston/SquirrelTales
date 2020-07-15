@@ -157,7 +157,8 @@ function renderMap() {
           let newDiv = document.createElement('div')
           newDiv.id = `${(j.toString()).padStart(2, '0')}${aYAxisLetters[i]}`
           newDiv.classList.add('hectare')
-          console.log(newDiv.id)
+          newDiv.innerText = newDiv.id
+          // console.log(newDiv.id)
           mapView.append(newDiv)
         }
       }
@@ -172,13 +173,21 @@ function renderMap() {
           newDiv.id = `${(j.toString()).padStart(2, '0')}${aYAxisLetters[i]}`
           newDiv.classList.add('hectare')
           newDiv.innerText = newDiv.id
-          console.log(newDiv.id)
+          // console.log(newDiv.id)
           mapView.append(newDiv)
         }
       }
       break
     default:
       console.error('Hectare parse error')
+  }
+
+  activateHectare(oSelected.hectare)
+
+  function activateHectare(input) {
+    let hectare = document.getElementById(input)
+    hectare.classList.add('activated-grid')
+    console.log(hectare)
   }
 }
   

@@ -43,13 +43,26 @@ body {
 
 div.parkSouth {
   background-image: url(./Public/central-park-mapSOUTH.png);
-  opacity: 1 
+  opacity: 1; 
 }
 
 div.parkNorth {
   background-image: url(./Public/central-park-mapNORTH.png);
-  opacity: 1 
+  opacity: 1; 
 }
+
+.map-view > div {
+  padding-top: 18px;
+  font-size: 12px;
+  border: 1px dotted lightgray;
+  color: rgb(57, 57, 58, 0.70 )
+}
+
+.activated-grid {
+  background-color: #f48c06;
+  opacity: 50%;
+}
+
 .fas {
   border: 1px solid black;
   padding: 3px;
