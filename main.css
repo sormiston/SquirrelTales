@@ -40,34 +40,33 @@ button:hover {
   border: 1px dotted black;
   margin: 0 auto;
   background-size: cover;
-  transition: opacity 1.5s ease-in-out 5s;
+  transition: opacity 1s ease;
   opacity: 0;
 }
 
 div.parkSouth {
   background-image: url(./Public/central-park-mapSOUTH.png);
-  opacity: 1; 
 }
 
 div.parkNorth {
   background-image: url(./Public/central-park-mapNORTH.png);
-  opacity: 1; 
 }
 
 .map-view > div {
   padding-top: 18px;
-  font-size: 12px;
+  font-size: 14px;
   border: 1px dotted lightgray;
   color: rgb(57, 57, 58, 0.80 );
-  visibility: hidden;
+  opacity: 10%;
+
 }
 
 .map-view > div.activated-grid {
   background-color: #f48c06;
   opacity: 60%;
-  border: 1px groove sienna;
+  border: 2px groove sienna;
   color: white;
-  visibility: visible;
+  transition: opacity 2s ease 1s;
 }
 
 .fas {

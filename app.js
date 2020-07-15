@@ -30,18 +30,20 @@ async function getData(e) {
     console.error(`Error! → ${err}`)
   }
 }
-// getData()
 
 function randomFetch() {
+  // clear previous image
+  // mapView.classList.remove('parkNorth', 'parkSouth')
+  mapView.style.opacity = 0;
   const randomIndex = Math.floor(Math.random() * (aLocalData.length - 1))
   oSelected = aLocalData[randomIndex]
+  renderIconBar()
   renderStory()
 }
 
-
 function renderStory() {
   clearStory()
-
+  renderMap()
   let text = oSelected.note_squirrel_park_stories
   const regex1 = /\.\\"/g
   const regex2 = /\.\s/g
@@ -67,13 +69,14 @@ function fadeText() {
     console.log(`Story Area timed render: ${storyArea.children[i]} at index ${i} of length ${storyArea.children.length}`)
     if (i == storyArea.children.length) {
       clearInterval(time)
+      
+      activateHectare(oSelected.hectare)
     } else {
       storyArea.children[i].classList.remove('hidden')
       i++;
     }
   }, 700)
 
-  renderIconBar()
 }
 
 function clearStory() {
@@ -141,12 +144,14 @@ function renderIconBar() {
   sHectare = oSelected.hectare
   hectareDisplay.innerText = `Hectare ${sHectare}`
 
-  renderMap()
+  
 }
   
 function renderMap() {
   // clear previous grid
   while (mapView.lastChild) mapView.removeChild(mapView.lastChild)
+  
+
   // Hard-coded to select between 2 map halves, each 21 x 9
   let sHectareX = sHectare.substr(0, 2)
     switch (sHectareX <= 21) {
@@ -164,24 +169,26 @@ function renderMap() {
       default:
         console.error('Hectare parse error')
     }
+  // activateHectare(oSelected.hectare)
+}
 
-  activateHectare(oSelected.hectare)
-
-  function activateHectare(input) {
-    let hectare = document.getElementById(input)
-    hectare.classList.add('activated-grid')
-    console.log(hectare)
-  }
-  function generateGrid(origin, end) {
-    for (let i = 0; i <= 8; i++) {
-      for (let j = origin; j <= end; j++) {
-        let newDiv = document.createElement('div')
-        newDiv.id = `${(j.toString()).padStart(2, '0')}${aYAxisLetters[i]}`
-        newDiv.classList.add('hectare')
-        newDiv.innerText = newDiv.id
-        // console.log(newDiv.id)
-        mapView.append(newDiv)
-      }
+function generateGrid(origin, end) {
+  for (let i = 0; i <= 8; i++) {
+    for (let j = origin; j <= end; j++) {
+      let newDiv = document.createElement('div')
+      newDiv.id = `${(j.toString()).padStart(2, '0')}${aYAxisLetters[i]}`
+      newDiv.classList.add('hectare')
+      newDiv.innerText = newDiv.id
+      // console.log(newDiv.id)
+      mapView.append(newDiv)
     }
   }
 }
+
+function activateHectare(input) {
+  let hectare = document.getElementById(input)
+  hectare.classList.add('activated-grid')
+  mapView.style.opacity = 1;
+  console.log(hectare)
+}
+
