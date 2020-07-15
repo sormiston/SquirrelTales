@@ -45,7 +45,7 @@ LINK HERE: https://wireframe.cc/pro/pp/0126f4a23358513
 |  Day | Deliverable | Status
 |---|---| ---|
 |July 13| Project Approval; HTML Mock-up & JS to store API data params to local variables | Complete ✓
-|July 14| Main dynamic display and icon bar integration; working CSS Grid model | Incomplete | 
+|July 14| Main dynamic display and icon bar integration; working CSS Grid model | Complete ✓ | 
 |July 15| Basic CSS layout and style; Sizing and placement of static map with Grid overlay; remaining time adv style modeling| Incomplete
 |July 16| Text copy + footer w/ external links; ON NEW BRANCH: media queries for mobile; adv. styling as time allows | Incomplete
 |July 17| Merge for successful advanced stylings if applicable; Presentations| Incomplete
@@ -64,7 +64,7 @@ Throughout your project, keep track of your Time Invested and Actual Time and up
 | HTML Mockup | H | 1.5 hrs | 1.5 hr
 | Working with API | H | 3 hrs | 3.5 hrs
 | Basic Story Display | H | 3 hrs | 3 hrs
-| Map: JS+Grid integration | H | 5 hrs | 1 hr
+| Map: JS+Grid integration | H | 5 hrs | 2 hr
 | Basic CSS | L | 2 hrs |
 | Map: DOM integration | H | 4 hrs | 4 hr
 | Adv. Styling | M | 6 hrs | 3 hrs
@@ -72,7 +72,7 @@ Throughout your project, keep track of your Time Invested and Actual Time and up
 | Mobile | L | 1.5 hrs |
 | Optional Search | L | 1hr |
 
-| Total | | 27.5 hrs| 16 hrs
+| Total | | 27.5 hrs| 17 hrs
 
 ## Code Snippet
 
