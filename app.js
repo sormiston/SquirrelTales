@@ -8,6 +8,7 @@ const dateDisplay = document.querySelector('#date')
 const hectareDisplay = document.querySelector('#hectare')
 const dataCall = document.querySelector('#fetch')
 const mapView = document.querySelector('.map-view')
+const iconBar = document.querySelector('.icon-bar')
 
 // local global variables
 const aYAxisLetters = ['A','B','C','D','E','F','G','H','I']
@@ -18,9 +19,11 @@ let sHectare = undefined
 dataCall.addEventListener('touchstart', getData)
 dataCall.addEventListener('click', getData)
 
+
 async function getData(e) {
   try {
     console.log(e)
+    iconBar.scrollIntoView({behavior: 'smooth'})
     const response = await axios.get(apiData)
     for (i = 0; i < response.data.length; i++) {
       aLocalData[i] = response.data[i];
