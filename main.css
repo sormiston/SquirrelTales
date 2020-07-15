@@ -36,15 +36,19 @@ body {
   height: 450px;
   border: 1px dotted black;
   margin: 0 auto;
-  background-size: contain;
+  background-size: cover;
+  transition: opacity 1.5s ease-in-out 5s;
+  opacity: 0;
 }
 
-.parkSouth {
+div.parkSouth {
   background-image: url(./Public/central-park-mapSOUTH.png);
+  opacity: 1 !important;
 }
 
-.parkNorth {
+div.parkNorth {
   background-image: url(./Public/central-park-mapNORTH.png);
+  opacity: 1 !important;
 }
 .fas {
   border: 1px solid black;
