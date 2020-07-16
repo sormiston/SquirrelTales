@@ -63,16 +63,17 @@ Throughout your project, keep track of your Time Invested and Actual Time and up
 | --- | :---: |  :---: | :---: | :---: |
 | HTML Mockup | H | 1.5 hrs | 1.5 hr
 | Working with API | H | 3 hrs | 3.5 hrs
-| Basic Story Display | H | 3 hrs | 3 hrs
-| Map: JS+Grid integration | H | 5 hrs | 2 hr
-| Basic CSS | L | 2 hrs |
-| Map: DOM integration | H | 4 hrs | 4 hr
-| Adv. Styling | M | 6 hrs | 3 hrs
+| Basic Story Display | H | 3 hrs | 4 hrs
+| Map: JS+Grid integration | H | 6 hrs | 2 hr
+| Basic CSS | L | 3 hrs |
+| Map: DOM integration | H | 5 hrs | 4 hr
+| Adv. Styling | M | 6 hrs | 4 hrs
 | Flavor text + footer | M | 1.5 hrs
-| Mobile | L | 1.5 hrs |
+| Mobile | L | 1.5 hrs | 1hr
 | Optional Search | L | 1hr |
+| Research |  | ?  | 8 hr
 
-| Total | | 27.5 hrs| 17 hrs
+| Total | | 27.5 hrs| 21.5 hrs
 
 ## Code Snippet
 
@@ -86,8 +87,9 @@ document.querySelector('#flex-div').insertAdjacentHTML('afterbegin', text)
 Lines 2 and 3 create the dynamic HTML and append to DOM, respectively.
 
 ## Change Log
- 7.15 - 3:32PM - disables display of non-target coordinate grid itmes
- 
+ NEW BRANCH "DirtyAvenue" - building a "off-page" horizontal scroller version of project featuring large, full size map
+ Also to include clickable hectares to search stories by hectare
+
  
  COMPATABILITY ISSUES - 
  - Google Chrome 83 & Firefox for Android DO NOT SUPPORT .replaceAll() -- RESOLVED
@@ -96,5 +98,6 @@ Lines 2 and 3 create the dynamic HTML and append to DOM, respectively.
  
 
  ## Optimizations
+ - REFACTOR JS querySelectors w/ HTML for cleaner syntactic selection - esp. map-view should be an ID
  - Re-assign dv #map-view as a class to free up CSS specificity for style override - DONE
  - DRY generation of grid items in renderMap switch statements - DONE

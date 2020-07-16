@@ -1,5 +1,5 @@
 
-// HTML Element and API constants
+// HTML Element and API constants - OH SWEET REDUNDANCY
 const apiData = 'https://data.cityofnewyork.us/resource/gfqj-f768.json'
 const storyArea = document.querySelector('#story-area')
 const storyDash = document.querySelector('main')
@@ -10,9 +10,11 @@ const hectareDisplay = document.querySelector('#hectare')
 const dataCall = document.querySelector('#fetch')
 const mapView = document.querySelector('.map-view')
 const iconBar = document.querySelector('.icon-bar')
+const beforeMap = document.querySelector('#before-map')
+const afterMap = document.querySelector('#after-map')
 
 
-// local global variables
+// local global variables to pass data between functions without worrying about local closure
 const aYAxisLetters = ['A','B','C','D','E','F','G','H','I']
 let aLocalData = []
 let oSelected = {}
@@ -35,16 +37,16 @@ async function getData(e) {
     console.error(`Error! → ${err}`)
   }
 }
-
+// DAISY CHAIN
 function randomFetch() {
   
-  mapView.style.opacity = 0;
+  // mapView.style.opacity = 0;
   const randomIndex = Math.floor(Math.random() * (aLocalData.length - 1))
   oSelected = aLocalData[randomIndex]
   renderIconBar()
   renderStory()
 }
-
+// DAISY CHAIN 
 function renderStory() {
   clearStory()
   renderMap()
@@ -59,7 +61,7 @@ function renderStory() {
   for (let i = 0; i < textLines.length; i++) {
     let newP = document.createElement('p')
     let newText = textLines[i]
-    newP.classList.add('hidden')
+    newP.classList.add('hiddenText')
     newP.innerText = newText
     storyArea.append(newP)
   }
@@ -70,13 +72,12 @@ function fadeText() {
   // Can some of this functionality be moved to CSS under transition-delay property??              << SIMPLIFY (?)
   let i = 0
   let time = setInterval(() => {
-    console.log(`Story Area timed render: ${storyArea.children[i]} at index ${i} of length ${storyArea.children.length}`)
+    // console.log(`Story Area timed render: ${storyArea.children[i]} at index ${i} of length ${storyArea.children.length}`)  <<< test
     if (i == storyArea.children.length) {
       clearInterval(time)
-      
       activateHectare(oSelected.hectare)
     } else {
-      storyArea.children[i].classList.remove('hidden')
+      storyArea.children[i].classList.remove('hiddenText')
       i++;
     }
   }, 700)
@@ -145,13 +146,14 @@ function renderIconBar() {
   dateDisplay.innerText = sDateDisplayText
   sHectare = oSelected.hectare
   hectareDisplay.innerText = `Hectare ${sHectare}`
-  carry(storyDash)
+  carry(storyDash, [beforeMap, afterMap])
 }
   
 function renderMap() {
-  // clear previous grid
+  // clear previous grid - deprecated in desktop model?
   while (mapView.lastChild) mapView.removeChild(mapView.lastChild)
-        generateGrid(1, 42) 
+  generateGrid(1, 42) 
+  mapView.classList.remove('hiddenMap')
   
 }
 
@@ -175,8 +177,9 @@ function activateHectare(input) {
   hectare.scrollIntoView({behavior:'smooth', block:'center', inline:'center'})
 }
 
-function carry(elt) {
-  elt.classList.add('fixed');
+function carry(fixed, fixedY) {
+  fixed.classList.add('fixed')
+  fixedY.forEach(elt => elt.classList.add('fixed-Y'))
 }
 
 // Function to establish fixed position in X-axis ONLY -- 
@@ -201,7 +204,7 @@ function carry(elt) {
    var y = supportPageOffset ? window.pageYOffset : isCSS1Compat ? document.documentElement.scrollTop : document.body.scrollTop;
  
       beforeMap.style.top = -y + 25 + "px"
-      afterMap.style.top = -y + 950 + "px"
+      afterMap.style.top = -y + 1225 + "px"
     })
   })
   (window);

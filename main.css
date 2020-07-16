@@ -3,11 +3,14 @@
 }
 body {
   text-align: center;
-  min-height: 2000px;
+  /*! min-height: 100vh; */
+ /* margin-left: 35vw;   this goes in the expanded state */
 }
 .fixed-Y {
   position: fixed;
 }
+
+
 header {
   display: flex;
   flex-flow: column nowrap;
@@ -29,8 +32,8 @@ h4 {
   font-size: 1.5em;
 }
 main {
-  position: relative;
-  top: 40vh;
+  /* position: relative;
+  top: 40vh; */
   display: flex;
   flex-flow: column nowrap;
   width: 80vw;
@@ -41,6 +44,8 @@ main.fixed {
   position: fixed;
   z-index: 1;
   max-width: 33vw;
+  left: 0;
+  top: 5vh;
 }
 .icon-bar {
   display: flex;
@@ -94,10 +99,7 @@ i.activated {
 }
 
 
-/* .icon-bar {
-  max-width: 50%;
-  margin: 0 auto;
-} */
+
 button:hover {
   cursor: pointer;
 }
@@ -109,7 +111,6 @@ button {
 #story-area {
   padding-top: 2%;
   margin: 0 auto;
-  /* border: 1px dotted black; */
   display: flex;
   flex-flow: column nowrap;
   transition: height 1.5s ease-in;
@@ -124,9 +125,11 @@ button {
   -o-transition: opacity 1.5s ease-in;
 }
 
-.hidden {
+.hiddenText {
   opacity: 0;
 }
+
+
 
 .map-view {
   position: relative;
@@ -139,9 +142,14 @@ button {
   border: 1px dotted black;
   margin: 0 auto;
   background-size: cover;
-  transition: opacity 1s ease;
+  transition: opacity 2s ease 5s;
+  /* opacity: 1; */
+  background-image: url(Public/central-park-mapFULL.png);
+}
+
+.hiddenMap {
+  display: none;
   opacity: 0;
-  background-image: url(Public/central-park-mapFULL.png)
 }
 
 
@@ -162,16 +170,15 @@ button {
   transition: opacity 2s ease 1s;
 }
 
-#after-map {
-  top: 1000px;
-}
+
 
 #about {
   display: flex;
   flex-flow: column nowrap;
   margin: 0 auto;
   justify-content:space-between;
-  /* top: 225px; */
+  
+  max-width: 80vw;
 }
 
 #about h3 {
