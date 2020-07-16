@@ -2,6 +2,7 @@
 // HTML Element and API constants
 const apiData = 'https://data.cityofnewyork.us/resource/gfqj-f768.json'
 const storyArea = document.querySelector('#story-area')
+const storyDash = document.querySelector('main')
 const dayIcon = document.querySelector('.fa-sun')
 const niteIcon = document.querySelector('.fa-moon')
 const dateDisplay = document.querySelector('#date')
@@ -146,15 +147,12 @@ function renderIconBar() {
   dateDisplay.innerText = sDateDisplayText
   sHectare = oSelected.hectare
   hectareDisplay.innerText = `Hectare ${sHectare}`
-
-  
+  carry(storyDash)
 }
   
 function renderMap() {
   // clear previous grid
   while (mapView.lastChild) mapView.removeChild(mapView.lastChild)
-  
-
   // Hard-coded to select between 2 map halves, each 21 x 9
   let sHectareX = sHectare.substr(0, 2)
     switch (sHectareX <= 21) {
@@ -193,5 +191,9 @@ function activateHectare(input) {
   hectare.classList.add('activated-grid')
   mapView.style.opacity = 1;
   console.log(hectare)
+}
+
+function carry(elt) {
+  elt.classList.add('fixed');
 }
 

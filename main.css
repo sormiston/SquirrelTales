@@ -27,6 +27,11 @@ main {
   display: flex;
   flex-flow: column nowrap;
 }
+
+main.fixed {
+  position: fixed;
+  z-index: 1;
+}
 .icon-bar {
   display: flex;
   align-items: baseline;
@@ -74,6 +79,7 @@ button {
   display: flex;
   flex-flow: column nowrap;
   transition: height 1.5s ease-in;
+  background-color: rgb(254, 250, 224, 0.6);
 }
 
 #story-area p {
