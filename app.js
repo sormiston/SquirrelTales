@@ -35,8 +35,8 @@ async function getData(e) {
 }
 
 function randomFetch() {
-  // clear previous image
-  // mapView.classList.remove('parkNorth', 'parkSouth')
+  // first non-async call, resize browser window and hide map to prepare display
+  window.resizeTo(1100, 800)
   mapView.style.opacity = 0;
   const randomIndex = Math.floor(Math.random() * (aLocalData.length - 1))
   oSelected = aLocalData[randomIndex]
