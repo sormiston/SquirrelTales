@@ -10,6 +10,10 @@ body {
   position: fixed;
 }
 
+body.display-state {
+  min-height: 1200px;
+  margin: 33vh 33vw;
+}
 
 header {
   display: flex;
@@ -142,7 +146,7 @@ button {
   border: 1px dotted black;
   margin: 0 auto;
   background-size: cover;
-  transition: opacity 2s ease 5s;
+  transition: opacity 2s ease 1.5s;
   /* opacity: 1; */
   background-image: url(Public/central-park-mapFULL.png);
 }

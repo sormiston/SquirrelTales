@@ -1,6 +1,7 @@
 
 // HTML Element and API constants - OH SWEET REDUNDANCY
 const apiData = 'https://data.cityofnewyork.us/resource/gfqj-f768.json'
+const appToken = '?$$app_token=RTFA3QYjhVZiI8te2yXCX8P4q'
 const storyArea = document.querySelector('#story-area')
 const storyDash = document.querySelector('main')
 const dayIcon = document.querySelector('.fa-sun')
@@ -28,7 +29,7 @@ async function getData(e) {
   try {
     console.log(e)
     iconBar.scrollIntoView({behavior: 'smooth'})
-    const response = await axios.get(apiData)
+    const response = await axios.get(apiData + appToken)
     for (i = 0; i < response.data.length; i++) {
       aLocalData[i] = response.data[i];
     }
@@ -49,7 +50,15 @@ function randomFetch() {
 // DAISY CHAIN 
 function renderStory() {
   clearStory()
-  // renderMap()
+  // clear/initialize map space in advance of when needed
+  while (mapView.lastChild) mapView.removeChild(mapView.lastChild)
+  mapView.style.display = 'grid'
+  generateGrid(1, 42)
+  document.querySelector('body').classList.add('display-state')
+  let hectare = document.getElementById(oSelected.hectare)
+  hectare.classList.add('activated-grid')
+  hectare.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' })
+  
   let text = oSelected.note_squirrel_park_stories
   const regex1 = /\.\\"/g
   const regex2 = /\.\s/g
@@ -75,7 +84,7 @@ function fadeText() {
     // console.log(`Story Area timed render: ${storyArea.children[i]} at index ${i} of length ${storyArea.children.length}`)  <<< test
     if (i == storyArea.children.length) {
       clearInterval(time)
-      renderMap(oSelected.hectare)
+      mapView.style.opacity = 1
     } else {
       storyArea.children[i].classList.remove('hiddenText')
       i++;
@@ -128,7 +137,6 @@ function renderIconBar() {
       }
   }
   const shift = oSelected.shift
-  console.log(dayIcon.classList)
   
   switch (shift) {
     case 'AM':
@@ -148,20 +156,8 @@ function renderIconBar() {
   hectareDisplay.innerText = `Hectare ${sHectare}`
   carry(storyDash, [beforeMap, afterMap])
 }
-  
-function renderMap(input) {
-  // clear previous grid - deprecated in desktop model?
-  while (mapView.lastChild) mapView.removeChild(mapView.lastChild)
-  mapView.style.display = 'grid'
-  generateGrid(1, 42)
-  // mapView.classList.remove('hiddenMap')
-  let hectare = document.getElementById(input)
-  hectare.classList.add('activated-grid')
-  // window.setTimeout(() => {
-    hectare.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' })
-    mapView.style.opacity = 1
-  // }, 3000)
-}
+
+
 
 function generateGrid(origin, end) {
   for (let i = 0; i <= 8; i++) {
@@ -170,15 +166,10 @@ function generateGrid(origin, end) {
       newDiv.id = `${(j.toString()).padStart(2, '0')}${aYAxisLetters[i]}`
       newDiv.classList.add('hectare')
       newDiv.innerText = newDiv.id
-      // console.log(newDiv.id)
       mapView.append(newDiv)
     }
   }
 }
-
-// function activateHectare(input) {
-  
-// }
 
 function carry(fixed, fixedY) {
   fixed.classList.add('fixed')
