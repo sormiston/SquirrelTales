@@ -49,7 +49,7 @@ function randomFetch() {
 // DAISY CHAIN 
 function renderStory() {
   clearStory()
-  renderMap()
+  // renderMap()
   let text = oSelected.note_squirrel_park_stories
   const regex1 = /\.\\"/g
   const regex2 = /\.\s/g
@@ -75,7 +75,7 @@ function fadeText() {
     // console.log(`Story Area timed render: ${storyArea.children[i]} at index ${i} of length ${storyArea.children.length}`)  <<< test
     if (i == storyArea.children.length) {
       clearInterval(time)
-      activateHectare(oSelected.hectare)
+      renderMap(oSelected.hectare)
     } else {
       storyArea.children[i].classList.remove('hiddenText')
       i++;
@@ -149,12 +149,18 @@ function renderIconBar() {
   carry(storyDash, [beforeMap, afterMap])
 }
   
-function renderMap() {
+function renderMap(input) {
   // clear previous grid - deprecated in desktop model?
   while (mapView.lastChild) mapView.removeChild(mapView.lastChild)
-  generateGrid(1, 42) 
-  mapView.classList.remove('hiddenMap')
-  
+  mapView.style.display = 'grid'
+  generateGrid(1, 42)
+  // mapView.classList.remove('hiddenMap')
+  let hectare = document.getElementById(input)
+  hectare.classList.add('activated-grid')
+  // window.setTimeout(() => {
+    hectare.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' })
+    mapView.style.opacity = 1
+  // }, 3000)
 }
 
 function generateGrid(origin, end) {
@@ -170,12 +176,9 @@ function generateGrid(origin, end) {
   }
 }
 
-function activateHectare(input) {
-  let hectare = document.getElementById(input)
-  hectare.classList.add('activated-grid')
-  mapView.style.opacity = 1;
-  hectare.scrollIntoView({behavior:'smooth', block:'center', inline:'center'})
-}
+// function activateHectare(input) {
+  
+// }
 
 function carry(fixed, fixedY) {
   fixed.classList.add('fixed')

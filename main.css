@@ -133,7 +133,7 @@ button {
 
 .map-view {
   position: relative;
-  top: 300px;
+  /* top: 300px; */
   display: grid;
   grid-template-columns: repeat(42, 1fr);
   grid-template-rows: repeat(9, 1fr);
@@ -147,10 +147,10 @@ button {
   background-image: url(Public/central-park-mapFULL.png);
 }
 
-.hiddenMap {
+/* .hiddenMap {
   display: none;
   opacity: 0;
-}
+} */
 
 
 .map-view > div {
