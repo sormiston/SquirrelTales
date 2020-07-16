@@ -80,12 +80,10 @@ function fadeText() {
       i++;
     }
   }, 700)
-
 }
 
 function clearStory() {
   while (storyArea.lastChild) storyArea.removeChild(storyArea.lastChild)
-  
 }
 
 function renderIconBar() {
@@ -153,24 +151,8 @@ function renderIconBar() {
 function renderMap() {
   // clear previous grid
   while (mapView.lastChild) mapView.removeChild(mapView.lastChild)
-  // Hard-coded to select between 2 map halves, each 21 x 9
-  let sHectareX = sHectare.substr(0, 2)
-    switch (sHectareX <= 21) {
-      case true: {
-        if (!mapView.classList.contains('parkSouth')) mapView.classList.add('parkSouth')
-        if (mapView.classList.contains('parkNorth')) mapView.classList.remove('parkNorth')
-        generateGrid(1, 21)
-        break
-      }
-      case false:
-        if (!mapView.classList.contains('parkNorth')) mapView.classList.add('parkNorth')
-        if (mapView.classList.contains('parkSouth')) mapView.classList.remove('parkSouth')
-        generateGrid(22, 42)
-        break
-      default:
-        console.error('Hectare parse error')
-    }
-  // activateHectare(oSelected.hectare)
+        generateGrid(1, 42) 
+  
 }
 
 function generateGrid(origin, end) {
@@ -190,7 +172,7 @@ function activateHectare(input) {
   let hectare = document.getElementById(input)
   hectare.classList.add('activated-grid')
   mapView.style.opacity = 1;
-  console.log(hectare)
+  hectare.scrollIntoView({behavior:'smooth', block:'center', inline:'center'})
 }
 
 function carry(elt) {

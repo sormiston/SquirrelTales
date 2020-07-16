@@ -31,12 +31,13 @@ main {
 main.fixed {
   position: fixed;
   z-index: 1;
+  max-width: 33vw;
 }
 .icon-bar {
   display: flex;
   align-items: baseline;
   justify-content: center;
-  background-color: rgb(254, 250, 224, .8);
+  background-color: rgb(254, 250, 224);
   min-height: 40px;
   padding-top: .2em;
 }
@@ -79,7 +80,7 @@ button {
   display: flex;
   flex-flow: column nowrap;
   transition: height 1.5s ease-in;
-  background-color: rgb(254, 250, 224, 0.6);
+  background-color: rgb(254, 250, 224, 0.8);
 }
 
 #story-area p {
@@ -96,24 +97,18 @@ button {
 
 .map-view {
   display: grid;
-  grid-template-columns: repeat(21, 1fr);
+  grid-template-columns: repeat(42, 1fr);
   grid-template-rows: repeat(9, 1fr);
-  width: 1050px;
-  height: 450px;
+  width: 4200px;
+  height: 900px;
   border: 1px dotted black;
   margin: 0 auto;
   background-size: cover;
   transition: opacity 1s ease;
   opacity: 0;
+  background-image: url(Public/central-park-mapFULL.png)
 }
 
-div.parkSouth {
-  background-image: url(./Public/central-park-mapSOUTH.png);
-}
-
-div.parkNorth {
-  background-image: url(./Public/central-park-mapNORTH.png);
-}
 
 .map-view > div {
   padding-top: 50%;
@@ -153,7 +148,6 @@ div.parkNorth {
 
 i.activated {
   filter: brightness(110%);
-  
 }
 
 #about {
@@ -161,8 +155,6 @@ i.activated {
   flex-flow: column nowrap;
   margin: 0 auto;
   justify-content:space-between;
-  
-  color: 
 
 }
 
@@ -186,5 +178,11 @@ a:active {
   }
   #map-context {
     display: none;
+  }
+
+  main.fixed {
+    position: static;
+    z-index: 0;
+    max-width: 100%;
   }
 } 
