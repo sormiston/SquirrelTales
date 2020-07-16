@@ -11,6 +11,7 @@ const dataCall = document.querySelector('#fetch')
 const mapView = document.querySelector('.map-view')
 const iconBar = document.querySelector('.icon-bar')
 
+
 // local global variables
 const aYAxisLetters = ['A','B','C','D','E','F','G','H','I']
 let aLocalData = []
@@ -36,8 +37,7 @@ async function getData(e) {
 }
 
 function randomFetch() {
-  // first non-async call, resize browser window and hide map to prepare display
-  window.resizeTo(1100, 800)
+  
   mapView.style.opacity = 0;
   const randomIndex = Math.floor(Math.random() * (aLocalData.length - 1))
   oSelected = aLocalData[randomIndex]
@@ -178,4 +178,32 @@ function activateHectare(input) {
 function carry(elt) {
   elt.classList.add('fixed');
 }
+
+// Function to establish fixed position in X-axis ONLY -- 
+// CREDIT to RICKY HARRISON, Leeds, UK - 
+// ARTICLE -- http://www.rickyh.co.uk/css-position-x-and-position-y/
+// CODEPEN -- https://codepen.io/rickyH/pen/GoJWEe
+
+(function(window) {
+  
+  /* A full compatability script from MDN: */
+  var supportPageOffset = window.pageXOffset !== undefined;
+  var isCSS1Compat = ((document.compatMode || "") === "CSS1Compat");
+ 
+  /* Set up some variables  */
+  const beforeMap = document.querySelector('#before-map')
+  const afterMap = document.querySelector('#after-map')
+  /* Add an event to the window.onscroll event */
+  window.addEventListener("scroll", function(e) {  
+    
+    /* A full compatability script from MDN for gathering the x and y values of scroll: */
+    // var x = supportPageOffset ? window.pageXOffset : isCSS1Compat ? document.documentElement.scrollLeft : document.body.scrollLeft;
+   var y = supportPageOffset ? window.pageYOffset : isCSS1Compat ? document.documentElement.scrollTop : document.body.scrollTop;
+ 
+      beforeMap.style.top = -y + 25 + "px"
+      afterMap.style.top = -y + 950 + "px"
+    })
+  })
+  (window);
+ 
 

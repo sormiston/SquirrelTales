@@ -16,7 +16,7 @@
 </head>
 
 <body>
-  <header>
+  <header id="before-map" class="fixed-Y">
     <img src="Public/1456764.svg" alt="squirrel in silhoutte">
     <h1>Squirrel Tales</h1>
     <h4>Sightings from the 2018 Central Park Squirrel Census</h4>
@@ -24,33 +24,38 @@
   <main>
     <div class="spacer"></div>
     <div class="icon-bar">
-      <span id="date">Sometime in October, 2018...</span><i class="fas fa-sun"></i><i class="fas fa-moon"></i><span id="hectare">Hectare   </span>
+      <span id="date">Sometime in October, 2018...</span><i class="fas fa-sun"></i><i class="fas fa-moon"></i><span
+        id="hectare">Hectare </span>
     </div>
     <button id="fetch">Fetch a story!</button>
     <div id="story-area">
     </div>
-   
+
   </main>
   <section>
     <div class="map-view">
     </div>
-    <p id="map-context">Map Orientation Text</p>
+    <p id="map-context"></p>
   </section>
-  <article id="about">
-    <h3>About the 2018 Central Park Squirrel Census</h3>
-    <p><em style="font-size:1.1em">From NYC Open Data --</em><br/>
-      The Squirrel Census (https://www.thesquirrelcensus.com/) is a multimedia science, design, and storytelling project focusing on the Eastern gray (Sciurus carolinensis). They count squirrels and present their findings to the public.
-      This table contains stories, observations, and notes written on tally sheets by Squirrel Sighters during the Census. Individual stories have been tagged with common story themes, 
-      such as “squirrel experience,” “park experience,” “dogs,” “other animals,” “accidental poems,” and “squirrels acting odd.”
-    </p>
-    <a href="https://www.nytimes.com/2018/10/06/nyregion/squirrels-central-park.html">NY Times: Why Count All the
-      Squirrels in Central Park? Why the Heck Not</a>
-  </article>
-  <footer>
-    <p>&copy Sean Ormiston 2020</p>
-
-  </footer>
-
+  <section id="after-map" class="fixed-Y">
+    <article id="about">
+      <h3>About the 2018 Central Park Squirrel Census</h3>
+      <p><em style="font-size:1.1em">From NYC Open Data --</em><br />
+        The Squirrel Census (https://www.thesquirrelcensus.com/) is a multimedia science, design, and storytelling
+        project focusing on the Eastern gray (Sciurus carolinensis). They count squirrels and present their findings to
+        the public.
+        This table contains stories, observations, and notes written on tally sheets by Squirrel Sighters during the
+        Census. Individual stories have been tagged with common story themes,
+        such as “squirrel experience,” “park experience,” “dogs,” “other animals,” “accidental poems,” and “squirrels
+        acting odd.”
+      </p>
+      <a href="https://www.nytimes.com/2018/10/06/nyregion/squirrels-central-park.html">NY Times: Why Count All the
+        Squirrels in Central Park? Why the Heck Not</a>
+    </article>
+    <footer>
+      <p>&copy Sean Ormiston 2020</p>
+    </footer>
+  </section>
 </body>
 
 </html>

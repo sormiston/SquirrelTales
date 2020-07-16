@@ -1,31 +1,40 @@
 * {
   box-sizing: border-box;
 }
-
 body {
-  /* max-width: 100vw; */
   text-align: center;
-  border: 1px dotted black;
-  margin: 1rem;
+  min-height: 2000px;
+}
+.fixed-Y {
+  position: fixed;
+}
+header {
+  display: flex;
+  flex-flow: column nowrap;
+  margin: 0 auto;
+  justify-content:space-between;
+  width: 100vw;
+  align-items: center;
 
 }
-
 header img {
-  max-width: 10vw;
-  
+  max-width: 10vw; 
 }
 h1 {
-  margin: .5rem auto;
+  margin: 0 auto 0 auto;
   font-size: 6em;
 }
 h4 {
   margin: .5rem auto;
   font-size: 1.5em;
 }
-
 main {
+  position: relative;
+  top: 40vh;
   display: flex;
   flex-flow: column nowrap;
+  width: 80vw;
+  margin: 0 auto;
 }
 
 main.fixed {
@@ -49,6 +58,29 @@ main.fixed {
   display: inline-block;
   min-width: 200px;
 }
+
+.fas {
+  border: 1px solid black;
+  padding: 3px;
+  border-radius: 48%;
+  filter: brightness(40%);
+  margin: 0 .2em;
+} 
+
+.fa-sun { 
+  color: #FCF300;
+  background-color: #a2d6f9ec; 
+  
+}
+
+.fa-moon {
+  color: #edf2f4;
+  background-color: #457b9d ;
+}
+
+i.activated {
+  filter: brightness(110%);
+}
 .spacer {
   /* display: inline-block; */
   min-height: 20px;
@@ -71,16 +103,17 @@ button:hover {
 }
 
 button {
-  min-height: 3em;
+  min-height: 25px;
+  z-index: 1;
 }
 #story-area {
   padding-top: 2%;
   margin: 0 auto;
-  border: 1px dotted black;
+  /* border: 1px dotted black; */
   display: flex;
   flex-flow: column nowrap;
   transition: height 1.5s ease-in;
-  background-color: rgb(254, 250, 224, 0.8);
+  background-color: rgb(254, 250, 224, 0.9);
 }
 
 #story-area p {
@@ -96,6 +129,8 @@ button {
 }
 
 .map-view {
+  position: relative;
+  top: 300px;
   display: grid;
   grid-template-columns: repeat(42, 1fr);
   grid-template-rows: repeat(9, 1fr);
@@ -127,27 +162,8 @@ button {
   transition: opacity 2s ease 1s;
 }
 
-.fas {
-  border: 1px solid black;
-  padding: 3px;
-  border-radius: 48%;
-  filter: brightness(40%);
-  margin: 0 .2em;
-} 
-
-.fa-sun { 
-  color: #FCF300;
-  background-color: #a2d6f9ec; 
-  
-}
-
-.fa-moon {
-  color: #edf2f4;
-  background-color: #457b9d ;
-}
-
-i.activated {
-  filter: brightness(110%);
+#after-map {
+  top: 1000px;
 }
 
 #about {
@@ -155,12 +171,11 @@ i.activated {
   flex-flow: column nowrap;
   margin: 0 auto;
   justify-content:space-between;
-
+  /* top: 225px; */
 }
 
 #about h3 {
   margin-bottom: .2em;
-  
 }
 
 a:link, a:visited {
