@@ -40,6 +40,7 @@ LINK HERE: https://wireframe.cc/pro/pp/0126f4a23358513
 - Staggered fade-in or typewriter effect of text rendering to story display space
 - Optional search term to select random entry from a pre-filtered pool
 
+
 ## Project Schedule
 
 |  Day | Deliverable | Status
@@ -64,13 +65,13 @@ Throughout your project, keep track of your Time Invested and Actual Time and up
 | HTML Mockup | H | 1.5 hrs | 1.5 hr
 | Working with API | H | 3 hrs | 3.5 hrs
 | Basic Story Display | H | 3 hrs | 4 hrs
-| Map: JS+Grid integration | H | 6 hrs | 2 hr
-| Basic CSS | L | 3 hrs |
+| Map: JS+Grid integration | H | 6 hrs | 5 hr
+| Basic CSS | L | 3 hrs | 2 hrs
 | Map: DOM integration | H | 5 hrs | 4 hr
 | Adv. Styling | M | 6 hrs | 4 hrs
 | Flavor text + footer | M | 1.5 hrs
-| Mobile | L | 1.5 hrs | 1hr
-| Optional Search | L | 1hr |
+| Mobile | L | 1.5 hrs | 1.25 hr
+| Hectare-based Search| M | 1hr15 | 2hr 
 | Research |  | ?  | 8 hr
 
 | Total | | 27.5 hrs| 21.5 hrs
@@ -88,16 +89,19 @@ Lines 2 and 3 create the dynamic HTML and append to DOM, respectively.
 
 ## Change Log
  NEW BRANCH "DirtyAvenue" - building a "off-page" horizontal scroller version of project featuring large, full size map
- Also to include clickable hectares to search stories by hectare
+ Also to include clickable hectares to search stories by hectare -- SUCCESS - Thurs Jul 16 6:51PM
 
+ Future to roll out most venerable custom squirrel cursor
  
  COMPATABILITY ISSUES - 
  - Google Chrome 83 & Firefox for Android DO NOT SUPPORT .replaceAll() -- RESOLVED
  - Fetch button must "sleep" while rendering text to prevent user overload
+ - Mobile adaption of DirtyAvenue branch
 
  
 
  ## Optimizations
  - REFACTOR JS querySelectors w/ HTML for cleaner syntactic selection - esp. map-view should be an ID
+ - Hit the API only ONCE, on page load
  - Re-assign dv #map-view as a class to free up CSS specificity for style override - DONE
  - DRY generation of grid items in renderMap switch statements - DONE

@@ -10,7 +10,7 @@ body {
 }
 
 body.display-state {
-  min-height: 1450px;
+  min-height: 1500px;
 }
 
 header {
@@ -115,14 +115,14 @@ button {
   margin: 0 auto;
   display: flex;
   flex-flow: column nowrap;
-  transition: height 1.5s ease-in;
+  transition: height 1.5s ease-in;  /* not really happening, is it? */
   background-color: rgb(254, 250, 224, 0.9);
 }
 
 #story-area p {
   flex: 0 auto;
   margin: 5px;
-  transition: opacity 1.5s ease-in;
+  transition: opacity .75s ease-in;
   -moz-transition: opacity 1.5s ease-in;
   -o-transition: opacity 1.5s ease-in;
 }
@@ -130,9 +130,6 @@ button {
 .hiddenText {
   opacity: 0;
 }
-
-
-
 .map-view {
   position: relative;
   /* top: 300px; */
@@ -150,20 +147,16 @@ button {
   z-index: 1;
 }
 
-/* .hiddenMap {
-  display: none;
-  opacity: 0;
-} */
-
-
 .map-view > div {
   padding-top: 50%;
   font-size: 14px;
   border: 1px dotted lightgray;
   color: rgb(57, 57, 58, 0.80 );
   opacity: 10%;
-
+  cursor: pointer;
 }
+
+
 
 .map-view > div.activated-grid {
   background-color: #f48c06;
@@ -173,12 +166,10 @@ button {
   transition: opacity 2s ease 1s;
 }
 
-
-
 #about {
   display: flex;
   flex-flow: column nowrap;
-  margin: 0 auto;
+  margin: 4em auto 0;
   justify-content:space-between;
   
   max-width: 80vw;
@@ -199,15 +190,16 @@ a:active {
 @media screen and (max-width: 800px) {
    
   .map-view {
-    display: none;
+    /* display: none;   Broken by JS in-line styling */ 
+    overflow: hidden;
   }
   #map-context {
     display: none;
   }
 
   main.fixed {
-    position: static;
-    z-index: 0;
+    position: fixed;
+    z-index: 2;
     max-width: 100%;
   }
 } 

@@ -16,19 +16,37 @@ const afterMap = document.querySelector('#after-map')
 
 
 // local global variables to pass data between functions without worrying about local closure
-const aYAxisLetters = ['A','B','C','D','E','F','G','H','I']
+const aYAxisLetters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I']
 let aLocalData = []
 let oSelected = {}
 let sHectare = undefined
+let aHectareStoryData = []
 
-dataCall.addEventListener('touchstart', getData)
-dataCall.addEventListener('click', getData)
+// dataCall.addEventListener('touchstart', getData)
+dataCall.addEventListener('click', handleClickTouch)
 
-
-async function getData(e) {
+function handleClickTouch(e) {
   try {
-    console.log(e)
-    iconBar.scrollIntoView({behavior: 'smooth'})
+    if (!aLocalData.length > 0) {
+      getData()
+    } else {
+      if (e.target.id == "fetch") {
+        randomFetch(aLocalData)
+      } else if (e.target.classList.contains('hectare')) {
+        aHectareStoryData = aLocalData.filter(obj => obj.hectare == e.target.id)
+        randomFetch(aHectareStoryData)
+      }
+    }
+  } catch (err) {
+    console.error(e)
+  }
+}
+
+
+
+async function getData() {
+  try {
+    // iconBar.scrollIntoView({behavior: 'smooth'})
     const response = await axios.get(apiData + appToken)
     for (i = 0; i < response.data.length; i++) {
       aLocalData[i] = response.data[i];
@@ -39,17 +57,18 @@ async function getData(e) {
   }
 }
 // DAISY CHAIN
-function randomFetch() {
-  
+function randomFetch(data) {
+
   // mapView.style.opacity = 0;
-  const randomIndex = Math.floor(Math.random() * (aLocalData.length - 1))
-  oSelected = aLocalData[randomIndex]
+  const randomIndex = Math.floor(Math.random() * (data.length - 1))
+  oSelected = data[randomIndex]
   renderIconBar()
   renderStory()
 }
 // DAISY CHAIN 
 function renderStory() {
   clearStory()
+  iconBar.scrollIntoView({ behavior: 'smooth' })
   // clear/initialize map space in advance of when needed
   while (mapView.lastChild) mapView.removeChild(mapView.lastChild)
   mapView.style.display = 'grid'
@@ -58,7 +77,7 @@ function renderStory() {
   let hectare = document.getElementById(oSelected.hectare)
   hectare.classList.add('activated-grid')
   hectare.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' })
-  
+
   let text = oSelected.note_squirrel_park_stories
   const regex1 = /\.\\"/g
   const regex2 = /\.\s/g
@@ -89,7 +108,7 @@ function fadeText() {
       storyArea.children[i].classList.remove('hiddenText')
       i++;
     }
-  }, 700)
+  }, 500)
 }
 
 function clearStory() {
@@ -100,8 +119,7 @@ function renderIconBar() {
   const sMonth = 'October'
   const sDay = oSelected.date.slice(2, 4)
   const sYear = oSelected.date.slice(4)
-  let sDayOfWeek = undefined 
-
+  let sDayOfWeek = undefined
   switch (sDay % 7) {
     case 0: {
       sDayOfWeek = 'Sunday'
@@ -134,10 +152,9 @@ function renderIconBar() {
     default: {
       console.log('day-of-week parse error')
       break
-      }
+    }
   }
   const shift = oSelected.shift
-  
   switch (shift) {
     case 'AM':
       if (!dayIcon.classList.contains('activated')) dayIcon.classList.add('activated')
@@ -156,21 +173,18 @@ function renderIconBar() {
   hectareDisplay.innerText = `Hectare ${sHectare}`
   carry(storyDash, [afterMap])
 }
-
-
-
 function generateGrid(origin, end) {
   for (let i = 0; i <= 8; i++) {
     for (let j = origin; j <= end; j++) {
       let newDiv = document.createElement('div')
       newDiv.id = `${(j.toString()).padStart(2, '0')}${aYAxisLetters[i]}`
       newDiv.classList.add('hectare')
+      newDiv.addEventListener('click', handleClickTouch)
       newDiv.innerText = newDiv.id
       mapView.append(newDiv)
     }
   }
 }
-
 function carry(fixed, fixedY) {
   fixed.classList.add('fixed')
   fixedY.forEach(elt => elt.classList.add('fixed-Y'))
@@ -181,26 +195,26 @@ function carry(fixed, fixedY) {
 // ARTICLE -- http://www.rickyh.co.uk/css-position-x-and-position-y/
 // CODEPEN -- https://codepen.io/rickyH/pen/GoJWEe
 
-(function(window) {
-  
+(function (window) {
+
   /* A full compatability script from MDN: */
   var supportPageOffset = window.pageXOffset !== undefined;
   var isCSS1Compat = ((document.compatMode || "") === "CSS1Compat");
- 
+
   /* Set up some variables  */
   const beforeMap = document.querySelector('#before-map')
   const afterMap = document.querySelector('#after-map')
   /* Add an event to the window.onscroll event */
-  window.addEventListener("scroll", function(e) {  
-    
+  window.addEventListener("scroll", function (e) {
+
     /* A full compatability script from MDN for gathering the x and y values of scroll: */
     // var x = supportPageOffset ? window.pageXOffset : isCSS1Compat ? document.documentElement.scrollLeft : document.body.scrollLeft;
-   var y = supportPageOffset ? window.pageYOffset : isCSS1Compat ? document.documentElement.scrollTop : document.body.scrollTop;
- 
-      // beforeMap.style.top = -y + 25 + "px"
-      afterMap.style.top = -y + 1225 + "px"
-    })
+    var y = supportPageOffset ? window.pageYOffset : isCSS1Compat ? document.documentElement.scrollTop : document.body.scrollTop;
+
+    // beforeMap.style.top = -y + 25 + "px"
+    afterMap.style.top = -y + 1225 + "px"
   })
+})
   (window);
- 
+
 
