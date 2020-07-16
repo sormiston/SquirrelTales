@@ -3,16 +3,14 @@
 }
 body {
   text-align: center;
-  /*! min-height: 100vh; */
- /* margin-left: 35vw;   this goes in the expanded state */
+ 
 }
 .fixed-Y {
   position: fixed;
 }
 
 body.display-state {
-  min-height: 1200px;
-  margin: 33vh 33vw;
+  min-height: 1450px;
 }
 
 header {
@@ -46,7 +44,7 @@ main {
 
 main.fixed {
   position: fixed;
-  z-index: 1;
+  z-index: 2;
   max-width: 33vw;
   left: 0;
   top: 5vh;
@@ -144,11 +142,12 @@ button {
   width: 4200px;
   height: 900px;
   border: 1px dotted black;
-  margin: 0 auto;
+  margin: 0 33vw;
   background-size: cover;
   transition: opacity 2s ease 1.5s;
   /* opacity: 1; */
   background-image: url(Public/central-park-mapFULL.png);
+  z-index: 1;
 }
 
 /* .hiddenMap {
