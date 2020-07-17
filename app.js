@@ -97,16 +97,18 @@ function fadeText() {
   dataCall.classList.add('wait')
   let i = 0
   let time = setInterval(() => {
-    // console.log(`Story Area timed render: ${storyArea.children[i]} at index ${i} of length ${storyArea.children.length}`)  <<< test
-    if (i == storyArea.children.length) {
-      clearInterval(time)
-      mapView.style.opacity = 1
+    
+    if (i == storyArea.children.length + 1) {
       document.body.classList.remove('wait')
       dataCall.classList.remove('wait')
       for (let i of mapView.children) i.classList.remove('wait')
-      
+      clearInterval(time)
+    }
+    if (i == storyArea.children.length) {
+      mapView.style.opacity = 1
+      i++
     } else {
-      document.query
+      
       storyArea.children[i].classList.remove('hiddenText')
       i++;
     }

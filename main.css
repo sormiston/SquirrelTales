@@ -141,7 +141,7 @@ button {
   border: 1px dotted black;
   margin: 0 33vw;
   background-size: cover;
-  transition: opacity 2s ease 1.5s;
+  transition: opacity 1s ease .5s;
   /* opacity: 1; */
   background-image: url(Public/central-park-mapFULL.png);
   z-index: 1;
