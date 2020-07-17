@@ -9,7 +9,7 @@ const niteIcon = document.querySelector('.fa-moon')
 const dateDisplay = document.querySelector('#date')
 const hectareDisplay = document.querySelector('#hectare')
 const dataCall = document.querySelector('#fetch')
-const mapView = document.querySelector('.map-view')
+const mapView = document.querySelector('#map-view')
 const iconBar = document.querySelector('.icon-bar')
 const beforeMap = document.querySelector('#before-map')
 const afterMap = document.querySelector('#after-map')
@@ -42,11 +42,8 @@ function handleClickTouch(e) {
   }
 }
 
-
-
 async function getData() {
   try {
-    // iconBar.scrollIntoView({behavior: 'smooth'})
     const response = await axios.get(apiData + appToken)
     for (i = 0; i < response.data.length; i++) {
       aLocalData[i] = response.data[i];
@@ -56,28 +53,26 @@ async function getData() {
     console.error(`Error! → ${err}`)
   }
 }
-// DAISY CHAIN
 function randomFetch(data) {
-
-  // mapView.style.opacity = 0;
   const randomIndex = Math.floor(Math.random() * (data.length - 1))
   oSelected = data[randomIndex]
   renderIconBar()
   renderStory()
 }
-// DAISY CHAIN 
 function renderStory() {
   clearStory()
-  iconBar.scrollIntoView({ behavior: 'smooth' })
+  
   // clear/initialize map space in advance of when needed
   while (mapView.lastChild) mapView.removeChild(mapView.lastChild)
   mapView.style.display = 'grid'
   generateGrid(1, 42)
+  // toggle body for expanded layout conditions
   document.querySelector('body').classList.add('display-state')
+  // center screen on relevant hectare
   let hectare = document.getElementById(oSelected.hectare)
   hectare.classList.add('activated-grid')
   hectare.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' })
-
+  // sanitize text 
   let text = oSelected.note_squirrel_park_stories
   const regex1 = /\.\\"/g
   const regex2 = /\.\s/g
@@ -97,14 +92,21 @@ function renderStory() {
 }
 
 function fadeText() {
-  // Can some of this functionality be moved to CSS under transition-delay property??              << SIMPLIFY (?)
+  // "Wait" cursor while this renders
+  // document.body.classList.add('wait')
+  dataCall.classList.add('wait')
   let i = 0
   let time = setInterval(() => {
     // console.log(`Story Area timed render: ${storyArea.children[i]} at index ${i} of length ${storyArea.children.length}`)  <<< test
     if (i == storyArea.children.length) {
       clearInterval(time)
       mapView.style.opacity = 1
+      document.body.classList.remove('wait')
+      dataCall.classList.remove('wait')
+      for (let i of mapView.children) i.classList.remove('wait')
+      
     } else {
+      document.query
       storyArea.children[i].classList.remove('hiddenText')
       i++;
     }
@@ -171,23 +173,24 @@ function renderIconBar() {
   dateDisplay.innerText = sDateDisplayText
   sHectare = oSelected.hectare
   hectareDisplay.innerText = `Hectare ${sHectare}`
-  carry(storyDash, [afterMap])
+  carry(storyDash, afterMap)
 }
 function generateGrid(origin, end) {
   for (let i = 0; i <= 8; i++) {
     for (let j = origin; j <= end; j++) {
       let newDiv = document.createElement('div')
       newDiv.id = `${(j.toString()).padStart(2, '0')}${aYAxisLetters[i]}`
-      newDiv.classList.add('hectare')
+      newDiv.classList.add('hectare', 'wait')
       newDiv.addEventListener('click', handleClickTouch)
       newDiv.innerText = newDiv.id
       mapView.append(newDiv)
     }
   }
 }
+// Second 
 function carry(fixed, fixedY) {
   fixed.classList.add('fixed')
-  fixedY.forEach(elt => elt.classList.add('fixed-Y'))
+  fixedY.classList.add('fixed-Y')
 }
 
 // Function to establish fixed position in X-axis ONLY -- 
@@ -202,7 +205,7 @@ function carry(fixed, fixedY) {
   var isCSS1Compat = ((document.compatMode || "") === "CSS1Compat");
 
   /* Set up some variables  */
-  const beforeMap = document.querySelector('#before-map')
+  
   const afterMap = document.querySelector('#after-map')
   /* Add an event to the window.onscroll event */
   window.addEventListener("scroll", function (e) {
@@ -211,7 +214,7 @@ function carry(fixed, fixedY) {
     // var x = supportPageOffset ? window.pageXOffset : isCSS1Compat ? document.documentElement.scrollLeft : document.body.scrollLeft;
     var y = supportPageOffset ? window.pageYOffset : isCSS1Compat ? document.documentElement.scrollTop : document.body.scrollTop;
 
-    // beforeMap.style.top = -y + 25 + "px"
+    
     afterMap.style.top = -y + 1225 + "px"
   })
 })

@@ -67,7 +67,7 @@ main.fixed {
 }
 
 .fas {
-  border: 1px solid black;
+  border: 2px solid #774936;
   padding: 3px;
   border-radius: 48%;
   filter: brightness(40%);
@@ -97,7 +97,7 @@ i.activated {
 
 #hectare {
   min-width: 80px;
-  padding: .5em .8em .5em 0;
+  padding: .5em;
 }
 
 
@@ -116,7 +116,7 @@ button {
   display: flex;
   flex-flow: column nowrap;
   transition: height 1.5s ease-in;  /* not really happening, is it? */
-  background-color: rgb(254, 250, 224, 0.9);
+  background-color: rgb(254, 250, 224, 0.96);
 }
 
 #story-area p {
@@ -130,7 +130,7 @@ button {
 .hiddenText {
   opacity: 0;
 }
-.map-view {
+#map-view {
   position: relative;
   /* top: 300px; */
   display: grid;
@@ -147,7 +147,7 @@ button {
   z-index: 1;
 }
 
-.map-view > div {
+#map-view > div {
   padding-top: 50%;
   font-size: 14px;
   border: 1px dotted lightgray;
@@ -156,9 +156,11 @@ button {
   cursor: pointer;
 }
 
+.wait {
+  cursor: wait !important;
+}
 
-
-.map-view > div.activated-grid {
+#map-view > div.activated-grid {
   background-color: #f48c06;
   opacity: 60%;
   border: 2px groove sienna;
