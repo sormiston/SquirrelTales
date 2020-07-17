@@ -68,6 +68,8 @@ function renderStory() {
   generateGrid(1, 42)
   // toggle body for expanded layout conditions
   document.querySelector('body').classList.add('display-state')
+  // detach and fix storyDash for transport 
+  carry(storyDash, afterMap)
   // center screen on relevant hectare
   let hectare = document.getElementById(oSelected.hectare)
   hectare.classList.add('activated-grid')
@@ -176,7 +178,7 @@ function renderIconBar() {
   dateDisplay.innerText = sDateDisplayText
   sHectare = oSelected.hectare
   hectareDisplay.innerText = `Hectare ${sHectare}`
-  carry(storyDash, afterMap)
+  
 }
 function generateGrid(origin, end) {
   for (let i = 0; i <= 8; i++) {
@@ -191,9 +193,9 @@ function generateGrid(origin, end) {
   }
 }
 // Second 
-function carry(fixed, fixedY) {
+function carry(fixed, fixedX) {
   fixed.classList.add('fixed')
-  fixedY.classList.add('fixed-Y')
+  if (!window.matchMedia('(max-width: 800px)').matches) fixedX.classList.add('fixed-X')
 }
 
 // Function to establish fixed position in X-axis ONLY -- 
@@ -202,23 +204,20 @@ function carry(fixed, fixedY) {
 // CODEPEN -- https://codepen.io/rickyH/pen/GoJWEe
 
 (function (window) {
-
   /* A full compatability script from MDN: */
   var supportPageOffset = window.pageXOffset !== undefined;
   var isCSS1Compat = ((document.compatMode || "") === "CSS1Compat");
 
-  /* Set up some variables  */
-  
-  const afterMap = document.querySelector('#after-map')
   /* Add an event to the window.onscroll event */
   window.addEventListener("scroll", function (e) {
 
     /* A full compatability script from MDN for gathering the x and y values of scroll: */
     // var x = supportPageOffset ? window.pageXOffset : isCSS1Compat ? document.documentElement.scrollLeft : document.body.scrollLeft;
     var y = supportPageOffset ? window.pageYOffset : isCSS1Compat ? document.documentElement.scrollTop : document.body.scrollTop;
-
-    
-    afterMap.style.top = -y + 1225 + "px"
+    // CITATION for use of window.matchMedia
+    //MDN web docs
+    // LINK-- https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia
+    window.matchMedia('(max-width: 800px)').matches ? console.log('skipping x-axis fix') : afterMap.style.top = -y + 1225 + "px"
   })
 })
   (window);

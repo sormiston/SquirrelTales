@@ -5,7 +5,7 @@ body {
   text-align: center;
  
 }
-.fixed-Y {
+.fixed-X {
   position: fixed;
 }
 
@@ -34,8 +34,6 @@ h4 {
   font-size: 1.5em;
 }
 main {
-  /* position: relative;
-  top: 40vh; */
   display: flex;
   flex-flow: column nowrap;
   width: 80vw;
@@ -100,8 +98,6 @@ i.activated {
   padding: .5em;
 }
 
-
-
 button:hover {
   cursor: pointer;
 }
@@ -120,6 +116,7 @@ button {
 }
 
 #story-area p {
+  min-width: 33vw;
   flex: 0 auto;
   margin: 5px;
   transition: opacity .75s ease-in;
@@ -198,17 +195,32 @@ a:active {
 
 @media screen and (max-width: 800px) {
    
-  .map-view {
-    /* display: none;   Broken by JS in-line styling */ 
-    overflow: hidden;
-  }
-  #map-context {
-    display: none;
+  body, header, main, section {
+  height: revert;
+  margin: 0 auto;
   }
 
+  body.display-state {
+    min-height: revert;
+  }
+
+  #map-view {
+    display: none !important;      
+  }
+main {
+  width: 100vw;
+}
   main.fixed {
-    position: fixed;
-    z-index: 2;
+    position: static;
+    z-index: 0;
     max-width: 100%;
+  }
+
+  button {
+    min-height: 10vh;
+    border: blanchedalmond 8px groove;
+  }
+  #after-map {
+    top: revert;
   }
 } 

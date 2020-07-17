@@ -88,9 +88,14 @@ document.querySelector('#flex-div').insertAdjacentHTML('afterbegin', text)
 Lines 2 and 3 create the dynamic HTML and append to DOM, respectively.
 
 ## Change Log
- NEW BRANCH "DirtyAvenue" - building a "off-page" horizontal scroller version of project featuring large, full size map
+ -NEW BRANCH "DirtyAvenue" - building a "off-page" horizontal scroller version of project featuring large, full size map
  Also to include clickable hectares to search stories by hectare -- SUCCESS - Thurs Jul 16 6:51PM
 
+ -Adapting map functionality to mobile is broken by the fact that the storyArea does NOT follow the scroll to active
+ Hectare simply by gaining fixed positioning, which seems to behave odd on most mobiles in horizontal direction.
+  I suspect a truly functional mobile version will depend on re-engineering
+ the animation sequence so the fixing/scroll only happens after 
+ 
  Future to roll out most venerable custom squirrel cursor
  
  COMPATABILITY ISSUES - 
