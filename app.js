@@ -88,10 +88,10 @@ function renderStory() {
     newP.innerText = newText
     storyArea.append(newP)
   }
-  fadeText()
+  fade()
 }
 
-function fadeText() {
+function fade() {
   // "Wait" cursor while this renders
   // document.body.classList.add('wait')
   dataCall.classList.add('wait')
@@ -103,14 +103,15 @@ function fadeText() {
       dataCall.classList.remove('wait')
       for (let i of mapView.children) i.classList.remove('wait')
       clearInterval(time)
+      return
     }
     if (i == storyArea.children.length) {
       mapView.style.opacity = 1
       i++
     } else {
-      
+      console.log(`${storyArea.children[i]} at index ${i} of ${storyArea.children.length}`)
       storyArea.children[i].classList.remove('hiddenText')
-      i++;
+      i++
     }
   }, 500)
 }
