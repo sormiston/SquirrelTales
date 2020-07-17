@@ -10,7 +10,7 @@ body {
 }
 
 body.display-state {
-  min-height: 1500px;
+  min-height: 1650px;
 }
 
 header {
@@ -218,6 +218,9 @@ a:link, a:visited {
 a:active {
   font-size: 1.05em;
   color: linear-gradient(red, yellow); 
+}
+footer {
+  margin-bottom: 1rem;
 }
 
 @media screen and (max-width: 800px) {

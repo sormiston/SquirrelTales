@@ -61,7 +61,7 @@ function randomFetch(data) {
 }
 function renderStory() {
   clearStory()
-  
+
   // clear/initialize map space in advance of when needed
   while (mapView.lastChild) mapView.removeChild(mapView.lastChild)
   mapView.style.display = 'grid'
@@ -99,7 +99,7 @@ function fade() {
   dataCall.classList.add('wait')
   let i = 0
   let time = setInterval(() => {
-    
+
     if (i == storyArea.children.length + 1) {
       document.body.classList.remove('wait')
       dataCall.classList.remove('wait')
@@ -178,7 +178,7 @@ function renderIconBar() {
   dateDisplay.innerText = sDateDisplayText
   sHectare = oSelected.hectare
   hectareDisplay.innerText = `Hectare ${sHectare}`
-  
+
 }
 function generateGrid(origin, end) {
   for (let i = 0; i <= 8; i++) {
