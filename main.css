@@ -44,7 +44,7 @@ main.fixed {
   position: fixed;
   z-index: 2;
   max-width: 33vw;
-  left: 0;
+  left: 1%;
   top: 5vh;
 }
 .icon-bar {
@@ -182,6 +182,7 @@ button {
   opacity: 60%;
   background-color: #ffc971;
   border: 1px sienna groove;
+  color: rgb(57, 57, 58, 0.80 )
 }
 
 
