@@ -1,7 +1,9 @@
 
+
 // HTML Element and API constants - OH SWEET REDUNDANCY
 const apiData = 'https://data.cityofnewyork.us/resource/gfqj-f768.json'
 const appToken = '?$$app_token=RTFA3QYjhVZiI8te2yXCX8P4q'
+// FTLOG trim this down
 const storyArea = document.querySelector('#story-area')
 const storyDash = document.querySelector('main')
 const dayIcon = document.querySelector('.fa-sun')
@@ -14,7 +16,6 @@ const iconBar = document.querySelector('.icon-bar')
 const beforeMap = document.querySelector('#before-map')
 const afterMap = document.querySelector('#after-map')
 
-
 // local global variables to pass data between functions without worrying about local closure
 const aYAxisLetters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I']
 let aLocalData = []
@@ -22,9 +23,12 @@ let oSelected = {}
 let sHectare = undefined
 let aHectareStoryData = []
 
-// dataCall.addEventListener('touchstart', getData)
+// Event listener 
 dataCall.addEventListener('click', handleClickTouch)
 
+// the event handler callback must perform some logic
+// first, check if the API data has been tapped and localized
+// second, check if event comes from the "random" button or a specific coordinate div
 function handleClickTouch(e) {
   try {
     if (!aLocalData.length > 0) {
@@ -41,7 +45,7 @@ function handleClickTouch(e) {
     console.error(e)
   }
 }
-
+// API call
 async function getData() {
   try {
     const response = await axios.get(apiData + appToken)
@@ -53,15 +57,20 @@ async function getData() {
     console.error(`Error! → ${err}`)
   }
 }
+// the data argument is either the full dataset aLocalData OR aHectareStoryData, which is a filtered subarray where hectare matches
+// the ID of the div that generated the call
+
 function randomFetch(data) {
   const randomIndex = Math.floor(Math.random() * (data.length - 1))
   oSelected = data[randomIndex]
+  // and we proceed to the rendering functions
   renderIconBar()
   renderStory()
 }
+
+
 function renderStory() {
   clearStory()
-
   // clear/initialize map space in advance of when needed
   while (mapView.lastChild) mapView.removeChild(mapView.lastChild)
   mapView.style.display = 'grid'
@@ -180,12 +189,16 @@ function renderIconBar() {
   hectareDisplay.innerText = `Hectare ${sHectare}`
 
 }
+
+// Somewhat noteworthy: two for loops create an array layout in two dimensions and give each newly created div a unique ID which is
+// generated A:J + 1:42.  These will match the hectare format on data.
 function generateGrid(origin, end) {
   for (let i = 0; i <= 8; i++) {
     for (let j = origin; j <= end; j++) {
       let newDiv = document.createElement('div')
       newDiv.id = `${(j.toString()).padStart(2, '0')}${aYAxisLetters[i]}`
       newDiv.classList.add('hectare', 'wait')
+      // second click event listner, this time on each coordinate cell at time of generation
       newDiv.addEventListener('click', handleClickTouch)
       newDiv.innerText = newDiv.id
       mapView.append(newDiv)
