@@ -87,7 +87,7 @@ main.fixed {
 }
 
 i.activated {
-  filter: brightness(135%);
+  filter: brightness(115%);
 }
 .spacer {
   /* display: inline-block; */
@@ -224,6 +224,12 @@ footer {
   margin-bottom: 1rem;
 }
 
+@media screen and (max-width: 1040px) {
+  main.fixed {
+    width: 343px;
+  }
+
+}
 @media screen and (max-width: 800px) {
    
   body, header, main, section {

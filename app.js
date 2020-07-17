@@ -59,7 +59,6 @@ async function getData() {
 }
 // the data argument is either the full dataset aLocalData OR aHectareStoryData, which is a filtered subarray where hectare matches
 // the ID of the div that generated the call
-
 function randomFetch(data) {
   const randomIndex = Math.floor(Math.random() * (data.length - 1))
   oSelected = data[randomIndex]
@@ -90,6 +89,7 @@ function renderStory() {
   const regex3 = /\\n/g
   text = text.replace(regex1, "'.<br/>")
   text = text.replace(regex2, ".<br/>")
+  // complete <br> insertion and SPLIT into an array of lines to print out, line-by-line
   const textLines = text.replace(regex3, '<br/>').split('<br/>')
 
   for (let i = 0; i < textLines.length; i++) {
