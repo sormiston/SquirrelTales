@@ -54,6 +54,9 @@ main.fixed {
   background-color: rgb(254, 250, 224);
   min-height: 40px;
   padding-top: .2em;
+  border-radius: 0 0 .5em;
+  border: 2px rgba(160, 82, 45, 0.8);
+  border-style: none solid solid solid;
 }
 .icon-bar > span, i {
   padding: .5em;
@@ -65,7 +68,7 @@ main.fixed {
 }
 
 .fas {
-  border: 2px solid #774936;
+  border: 3px solid #774936;
   padding: 3px;
   border-radius: 48%;
   filter: brightness(40%);
@@ -84,18 +87,26 @@ main.fixed {
 }
 
 i.activated {
-  filter: brightness(110%);
+  filter: brightness(135%);
 }
 .spacer {
   /* display: inline-block; */
   min-height: 20px;
   flex: 2 0 100%;
   background-color: #DDA15E;
+  border-radius: 0 .5em 0 0;
+  border: 2px solid rgba(160, 82, 45, 0.8);
+  border-bottom: 2px solid rgba(160, 82, 45, 0.8);
 }
 
 #hectare {
   min-width: 80px;
   padding: .5em;
+  font-family: 'Roboto Slab', serif;
+}
+
+#date {
+  font-family: 'Roboto Slab', serif;
 }
 
 button:hover {
@@ -105,6 +116,11 @@ button:hover {
 button {
   min-height: 25px;
   z-index: 1;
+  border: .3em groove #b2b2b2;
+  margin: .15em 0;
+  border-radius: .5em;
+  padding: .3em;
+  font-size: 14px;
 }
 #story-area {
   width: 99.9%;
@@ -114,6 +130,10 @@ button {
   flex-flow: column nowrap;
   transition: height 1.5s ease-in;  /* not really happening, is it? */
   background-color: rgb(254, 250, 224, 0.96);
+  border-radius: .5em .5em 2em .5em;
+  border: 2px rgba(160, 82, 45, 0.8) solid;
+  font-family: 'Rock Salt', cursive;
+  overflow: scroll;
 }
 
 #story-area p {
@@ -184,9 +204,8 @@ button {
 #about {
   display: flex;
   flex-flow: column nowrap;
-  margin: auto 0;
+  margin: auto 10vw;
   justify-content:space-between;
-  max-width: 80vw;
 }
 
 #about h3 {
