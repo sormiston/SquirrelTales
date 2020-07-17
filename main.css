@@ -130,6 +130,11 @@ button {
 .hiddenText {
   opacity: 0;
 }
+
+.wait {
+  cursor: wait !important;
+}
+
 #map-view {
   position: relative;
   /* top: 300px; */
@@ -148,17 +153,20 @@ button {
 }
 
 #map-view > div {
-  padding-top: 50%;
-  font-size: 14px;
+  padding-top: 42%;
+  font-size: 18px;
   border: 1px dotted lightgray;
   color: rgb(57, 57, 58, 0.80 );
   opacity: 10%;
   cursor: pointer;
 }
 
-.wait {
-  cursor: wait !important;
+#map-view > div:hover {
+  opacity: 60%;
+  background-color: #ffc971;
+  border: 1px sienna groove;
 }
+
 
 #map-view > div.activated-grid {
   background-color: #f48c06;
@@ -173,7 +181,6 @@ button {
   flex-flow: column nowrap;
   margin: 4em auto 0;
   justify-content:space-between;
-  
   max-width: 80vw;
 }
 
