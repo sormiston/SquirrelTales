@@ -107,6 +107,7 @@ button {
   z-index: 1;
 }
 #story-area {
+  width: 99.9%;
   padding-top: 2%;
   margin: 0 auto;
   display: flex;
@@ -116,7 +117,6 @@ button {
 }
 
 #story-area p {
-  min-width: 33vw;
   flex: 0 auto;
   margin: 5px;
   transition: opacity .75s ease-in;
