@@ -34,11 +34,10 @@ LINK HERE: https://wireframe.cc/pro/pp/0126f4a23358513
 
 #### PostMVP  
 
-- JS logic will display a static image of either north or southern half of Central Park depending.
-  + CSS Grid will overlay the map and illuminate the relevant hectare mentioned in the story
-- Advanced animations to "slow down" UX of the app, like a scroll-out of main story display.  Icon Bar and Generate Button will sit on top of one another - on click, these divs will part to create the display space.
-- Staggered fade-in or typewriter effect of text rendering to story display space
-- Optional search term to select random entry from a pre-filtered pool
+- CSS Grid will overlay the map and illuminate the relevant hectare mentioned in the story - COMPLETE
+- Advanced animations to "slow down" UX of the app, like a scroll-out of main story display.  Icon Bar and Generate Button will sit on top of one another - on click, these divs will part to create the display space. - SEMI COMPLETE
+- Staggered fade-in or typewriter effect of text rendering to story display space - COMPLETE
+- Click a hectare to search for stories from that sector - COMPLETE
 
 
 ## Project Schedule
@@ -47,9 +46,9 @@ LINK HERE: https://wireframe.cc/pro/pp/0126f4a23358513
 |---|---| ---|
 |July 13| Project Approval; HTML Mock-up & JS to store API data params to local variables | Complete ✓
 |July 14| Main dynamic display and icon bar integration; working CSS Grid model | Complete ✓ | 
-|July 15| Basic CSS layout and style; Sizing and placement of static map with Grid overlay; remaining time adv style modeling| Incomplete
-|July 16| Text copy + footer w/ external links; ON NEW BRANCH: media queries for mobile; adv. styling as time allows | Incomplete
-|July 17| Merge for successful advanced stylings if applicable; Presentations| Incomplete
+|July 15| Basic CSS layout and style; Sizing and placement of static map with Grid overlay; remaining time adv style modeling| Complete
+|July 16| Text copy + footer w/ external links; ON NEW BRANCH: media queries for mobile; adv. styling as time allows | Complete
+|July 17| Merge for successful advanced stylings if applicable; Presentations| 
 
 
 ## Priority Matrix
@@ -78,12 +77,38 @@ Throughout your project, keep track of your Time Invested and Actual Time and up
 
 ## Code Snippet
 
-Comfortable text readability is an important part of this project.  This code replaces the JS newline literals that are littered throughout
-the story strings with HTML &lt;br&#47;&gt; tags to preserve the intended flow of the entry.  Where a story string has been gotten from object and assigned to variable ```text``` ...
+The is my attempt at "micro choreographing" the animated fade ins of each *line* of text, followed by smooth scrolling transitions,
+and a final "reveal" of the map.  A waiting cursor runs during this time.
+
+THe code works in the context of a function running on a 500ms window set by setInterval.  An index i =0 is introduced outside
+the scope of the setInterval function.  On each iteration of setInterval, a line of text is rendered and i is incremented, until all 
+lines are rendered (i == storyArea.children.length) at which point the map is "revealed" but the cycle is allowed to continue once more. On that next cycle (storyArea.children.length + 1) the waiting cursor defaults back and the setInterval functions TURNS ITSELF OFF, which I think is cool.
+
 ```
-text = text.replaceAll('\n','<br/>')
-text = `<p>${text}</p>`
-document.querySelector('#flex-div').insertAdjacentHTML('afterbegin', text)
+function fade() {
+  // "Wait" cursor while this renders
+  // document.body.classList.add('wait')
+  dataCall.classList.add('wait')
+  let i = 0
+  let time = setInterval(() => {
+    
+    if (i == storyArea.children.length + 1) {
+      document.body.classList.remove('wait')
+      dataCall.classList.remove('wait')
+      for (let i of mapView.children) i.classList.remove('wait')
+      clearInterval(time)
+      return
+    }
+    if (i == storyArea.children.length) {
+      mapView.style.opacity = 1
+      i++
+    } else {
+      console.log(`${storyArea.children[i]} at index ${i} of ${storyArea.children.length}`)
+      storyArea.children[i].classList.remove('hiddenText')
+      i++
+    }
+  }, 500)
+}
 ```
 Lines 2 and 3 create the dynamic HTML and append to DOM, respectively.
 
@@ -103,10 +128,8 @@ Lines 2 and 3 create the dynamic HTML and append to DOM, respectively.
  - Fetch button must "sleep" while rendering text to prevent user overload
  - Mobile adaption of DirtyAvenue branch
 
- 
-
  ## Optimizations
  - REFACTOR JS querySelectors w/ HTML for cleaner syntactic selection - esp. map-view should be an ID
- - Hit the API only ONCE, on page load
+ - Hit the API only ONCE, on page load - DONE !!
  - Re-assign dv #map-view as a class to free up CSS specificity for style override - DONE
  - DRY generation of grid items in renderMap switch statements - DONE
