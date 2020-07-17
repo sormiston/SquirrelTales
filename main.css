@@ -224,7 +224,7 @@ a:active {
    
   body, header, main, section {
   height: revert;
-  margin: 0 auto;
+  margin: 0 .2rem;
   }
 
   body.display-state {
