@@ -133,7 +133,12 @@ button {
   border-radius: .5em .5em 2em .5em;
   border: 2px rgba(160, 82, 45, 0.8) solid;
   font-family: 'Rock Salt', cursive;
+  
+}
+
+main.fixed #story-area {
   overflow: scroll;
+  max-height: 80vh;
 }
 
 #story-area p {
@@ -195,7 +200,7 @@ button {
 }
 #orientation {
   width: 80vw;
-  margin: 0 auto;
+  margin: .5em auto 0;
   display: flex;
   justify-content: space-evenly;
 }
@@ -251,6 +256,7 @@ main {
     position: static;
     z-index: 0;
     max-width: 100%;
+    left: 0;
   }
 
   button {
