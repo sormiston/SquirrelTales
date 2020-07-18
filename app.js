@@ -86,11 +86,13 @@ function renderStory() {
   let text = oSelected.note_squirrel_park_stories
   const regex1 = /\.\\"/g
   const regex2 = /\.\s/g
-  const regex3 = /\\n/g
+  const regex3 = /\n/g
   text = text.replace(regex1, "'.<br/>")
   text = text.replace(regex2, ".<br/>")
   // complete <br> insertion and SPLIT into an array of lines to print out, line-by-line
-  const textLines = text.replace(regex3, '<br/>').split('<br/>')
+  text = text.replace(regex3, ' ')
+  const textLines = text.split('<br/>')
+  console.log(textLines)
 
   for (let i = 0; i < textLines.length; i++) {
     let newP = document.createElement('p')
