@@ -77,7 +77,7 @@ main.fixed {
 
 .fa-sun { 
   color: #FCF300;
-  background-color: #a2d6f9ec; 
+  background-color: #4bb7ffed; 
   
 }
 
@@ -171,6 +171,7 @@ main.fixed #story-area {
   transition: opacity 1s ease .5s;
   /* opacity: 1; */
   background-image: url(Public/central-park-mapFULL.png);
+  background-size: 4200px 900px;
   z-index: 1;
 }
 
@@ -247,9 +248,17 @@ footer {
   }
 
   #map-view {
-    display: none !important;      
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    width: 300px;
+    height: 300px;
+    border: 1px dotted black;
+    margin: 2% auto; 
+    background-attachment: local;
+    overflow: auto;   
   }
-main {
+
+  main {
   width: 100vw;
 }
   main.fixed {

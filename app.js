@@ -21,14 +21,15 @@ const aYAxisLetters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I']
 let aLocalData = []
 let oSelected = {}
 let sHectare = undefined
-let aHectareStoryData = []
+let aDataByHectare = []
 
 // Event listener 
 dataCall.addEventListener('click', handleClickTouch)
 
-// the event handler callback must perform some logic
-// first, check if the API data has been tapped and localized
-// second, check if event comes from the "random" button or a specific coordinate div
+// the event handler callback must perform some control flow --
+// first, check if the API data has been tapped and localized yet - if so, no need to tap it again this session
+// second, check if event calls from "random" button or a specific hectare
+
 function handleClickTouch(e) {
   try {
     if (!aLocalData.length > 0) {
@@ -37,8 +38,8 @@ function handleClickTouch(e) {
       if (e.target.id == "fetch") {
         randomFetch(aLocalData)
       } else if (e.target.classList.contains('hectare')) {
-        aHectareStoryData = aLocalData.filter(obj => obj.hectare == e.target.id)
-        randomFetch(aHectareStoryData)
+        aDataByHectare = aLocalData.filter(obj => obj.hectare == e.target.id)
+        randomFetch(aDataByHectare)
       }
     }
   } catch (err) {
@@ -57,14 +58,14 @@ async function getData() {
     console.error(`Error! → ${err}`)
   }
 }
-// the data argument is either the full dataset aLocalData OR aHectareStoryData, which is a filtered subarray where hectare matches
+// the data argument is either the full dataset aLocalData OR aDataByHectare, which is a filtered subarray where hectare matches
 // the ID of the div that generated the call
 function randomFetch(data) {
   const randomIndex = Math.floor(Math.random() * (data.length - 1))
   oSelected = data[randomIndex]
   // and we proceed to the rendering functions
   renderIconBar()
-  renderStory()
+  window.matchMedia('(max-width: 800px)').matches ? renderMobileStory() : renderStory()
 }
 
 
@@ -72,8 +73,8 @@ function renderStory() {
   clearStory()
   // clear/initialize map space in advance of when needed
   while (mapView.lastChild) mapView.removeChild(mapView.lastChild)
-  mapView.style.display = 'grid'
-  generateGrid(1, 42)
+  mapView.removeAttribute("display")
+  generateGrid(1, 42, 0, 8)
   // toggle body for expanded layout conditions
   document.querySelector('body').classList.add('display-state')
   // detach and fix storyDash for transport 
@@ -83,6 +84,36 @@ function renderStory() {
   hectare.classList.add('activated-grid')
   hectare.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' })
   // sanitize text 
+  treatText()
+  fade()
+}
+function renderMobileStory() {
+  // clear/initialize map space in advance of when needed
+  while (mapView.lastChild) mapView.removeChild(mapView.lastChild)
+  
+  // Convert the row letter to num (inde of alphabet array)...for better handling
+  const hectareCol = Number(oSelected.hectare.substr(0, 2))
+  const hectareRow = aYAxisLetters.indexOf(oSelected.hectare.substr(2))
+  console.log(hectareCol, hectareRow)
+  mapView.style.display = 'grid'
+  mapOffset(hectareCol, hectareRow)
+  determineEnvirons(hectareCol, hectareRow)
+
+  // must be called after grid is generated
+  const hectare = document.getElementById(oSelected.hectare)
+  hectare.classList.add('activated-grid')
+  
+  // toggle body for expanded layout conditions
+  document.querySelector('body').classList.add('display-state')
+  
+  // center screen on relevant hectare
+  // hectare.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' })
+  
+  treatText()
+  fade()
+}
+
+function treatText() {
   let text = oSelected.note_squirrel_park_stories
   const regex1 = /\.\\"/g
   const regex2 = /\.\s/g
@@ -101,12 +132,45 @@ function renderStory() {
     newP.innerText = newText
     storyArea.append(newP)
   }
-  fade()
+}
+
+function mapOffset(nCol, nRow) {
+  // special case for last column - 42 - to not go over map edge
+  const nXOffset = (nCol !== 42) ? -(((nCol >= 2 ? nCol : 2) - 2) * 100) : -((nCol - 3) * 100) 
+  const nYOffset = (nRow !== 8) ? -(((nRow >= 2 ? nRow : 2 )- 2) * 100) : -((nRow - 3) * 100)
+  mapView.style.backgroundPosition = `${nXOffset}px ${nYOffset}px`
+}
+
+function determineEnvirons(nCol, nRow) {
+  console.log(oSelected.hectare)
+  if (nCol === 1) {
+    if (nRow === 0) {
+      generateGrid(nCol, nCol + 2, nRow, nRow + 2)
+    } else if (nRow === 8) {
+      generateGrid(nCol, nCol + 2, nRow - 2, nRow)
+    } else {
+      generateGrid(nCol, nCol + 2, nRow - 1, nRow + 1)
+    }
+  } else if (nCol === 42) {
+    if (nRow === 0) {
+      generateGrid(nCol - 2, nCol, nRow, nRow + 2)
+    } else if (nRow === 8) {
+      generateGrid(nCol - 2, nCol, nRow - 2, nRow)
+    } else {
+      generateGrid(nCol - 2, nCol, nRow - 1 , nRow + 1)
+    }
+  } else if (nRow === 0 && nCol !== 1 && nCol !== 42) {
+    generateGrid(nCol - 1, nCol + 1, nRow, nRow + 2)
+  } else if (nRow === 8 && nCol !== 1 && nCol !== 42) {
+    generateGrid(nCol - 1, nCol + 1, nRow - 2, nRow)
+  } else {
+    generateGrid(nCol - 1, nCol + 1, nRow - 1, nRow + 1)
+  }
 }
 
 function fade() {
   // "Wait" cursor while this renders
-  // document.body.classList.add('wait')
+  // document.querySelector('*').classList.add('wait')
   dataCall.classList.add('wait')
   let i = 0
   let time = setInterval(() => {
@@ -194,9 +258,10 @@ function renderIconBar() {
 
 // Somewhat noteworthy: two for loops create an array layout in two dimensions and give each newly created div a unique ID which is
 // generated A:J + 1:42.  These will match the hectare format on data.
-function generateGrid(origin, end) {
-  for (let i = 0; i <= 8; i++) {
-    for (let j = origin; j <= end; j++) {
+
+function generateGrid(colStart, colEnd, rowStart, rowEnd) {
+  for (let i = rowStart; i <= rowEnd; i++) {
+    for (let j = colStart; j <= colEnd; j++) {
       let newDiv = document.createElement('div')
       newDiv.id = `${(j.toString()).padStart(2, '0')}${aYAxisLetters[i]}`
       newDiv.classList.add('hectare', 'wait')
@@ -210,6 +275,7 @@ function generateGrid(origin, end) {
 // Second 
 function carry(fixed, fixedX) {
   fixed.classList.add('fixed')
+  // the after-map section will only transport along x-axis in non-mobile, full scroll version
   if (!window.matchMedia('(max-width: 800px)').matches) fixedX.classList.add('fixed-X')
 }
 
