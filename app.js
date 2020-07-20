@@ -137,7 +137,7 @@ function treatText() {
 function mapOffset(nCol, nRow) {
   // special case for last column - 42 - to not go over map edge
   const nXOffset = (nCol !== 42) ? -(((nCol >= 2 ? nCol : 2) - 2) * 100) : -((nCol - 3) * 100) 
-  const nYOffset = (nRow !== 8) ? -(((nRow >= 2 ? nRow : 2 )- 2) * 100) : -((nRow - 3) * 100)
+  const nYOffset = -(((nRow >= 2 ? nRow : 2 )- 2) * 100)
   mapView.style.backgroundPosition = `${nXOffset}px ${nYOffset}px`
 }
 
