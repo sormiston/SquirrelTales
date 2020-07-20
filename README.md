@@ -125,8 +125,12 @@ Lines 2 and 3 create the dynamic HTML and append to DOM, respectively.
  
  COMPATABILITY ISSUES - 
  - Google Chrome 83 & Firefox for Android DO NOT SUPPORT .replaceAll() -- RESOLVED
- - Fetch button must "sleep" while rendering text to prevent user overload
- - Mobile adaption of DirtyAvenue branch
+ - Fetch button must "sleep" while rendering text to prevent user overload - OK FOR NOW
+ 
+ 07.20.20 
+- Firefox for android renders 100% opaque activated grid and opaque coord fonts?
+- Story paragraphs not clearing for new renders on mobile
+
 
  ## Optimizations
  - REFACTOR JS querySelectors w/ HTML for cleaner syntactic selection - esp. map-view should be an ID

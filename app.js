@@ -88,6 +88,8 @@ function renderStory() {
   fade()
 }
 function renderMobileStory() {
+  clearStory()
+
   // clear/initialize map space in advance of when needed
   while (mapView.lastChild) mapView.removeChild(mapView.lastChild)
   
