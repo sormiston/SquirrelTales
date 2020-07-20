@@ -73,7 +73,7 @@ function renderStory() {
   clearStory()
   // clear/initialize map space in advance of when needed
   while (mapView.lastChild) mapView.removeChild(mapView.lastChild)
-  mapView.removeAttribute("display")
+  mapView.style.display = 'grid';
   generateGrid(1, 42, 0, 8)
   // toggle body for expanded layout conditions
   document.querySelector('body').classList.add('display-state')
