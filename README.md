@@ -1,5 +1,7 @@
 # Project Overview
 
+## LIVE LINK: https://sormiston.github.io/SquirrelTales/
+
 ## Project Name
 
 SquirrelTales - deep thoughts and slices of life from the Central Park Squirrel Census of 2018
