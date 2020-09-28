@@ -300,7 +300,7 @@ function carry(fixed, fixedX) {
     // CITATION for use of window.matchMedia
     //MDN web docs
     // LINK-- https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia
-    window.matchMedia('(max-width: 800px)').matches ? console.log('skipping x-axis fix') : afterMap.style.top = -y + 1325 + "px"
+    window.matchMedia('(max-width: 800px)').matches ? console.log('skipping x-axis fix') : afterMap.style.top = -y + 1225 + "px"
   })
 })
   (window);
