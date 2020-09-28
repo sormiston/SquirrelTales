@@ -1,9 +1,9 @@
 
 
-// HTML Element and API constants - OH SWEET REDUNDANCY
+
 const apiData = 'https://data.cityofnewyork.us/resource/gfqj-f768.json'
 const appToken = '?$$app_token=RTFA3QYjhVZiI8te2yXCX8P4q'
-// FTLOG trim this down
+
 const storyArea = document.querySelector('#story-area')
 const storyDash = document.querySelector('main')
 const dayIcon = document.querySelector('.fa-sun')
@@ -300,7 +300,7 @@ function carry(fixed, fixedX) {
     // CITATION for use of window.matchMedia
     //MDN web docs
     // LINK-- https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia
-    window.matchMedia('(max-width: 800px)').matches ? console.log('skipping x-axis fix') : afterMap.style.top = -y + 1225 + "px"
+    window.matchMedia('(max-width: 800px)').matches ? console.log('skipping x-axis fix') : afterMap.style.top = -y + 1325 + "px"
   })
 })
   (window);
