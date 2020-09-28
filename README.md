@@ -8,7 +8,7 @@ SquirrelTales - deep thoughts and slices of life from the Central Park Squirrel 
 
 ## Project Description
 
-This project aims to offer a nostalgic and upbeat portrait of civic life by presenting the written words of the 2018 Central Park Squirrel volunteer Census-takers in a thoughtfully presentable interface.  It is hoped that the tone of these anonymous reflections will invite the user to employ an active imagination and access positive recollections of nature, community, and Central Park itself. 
+This project aims to offer a portrait of civic life by presenting the written observations of the 2018 Central Park Squirrel Census through a geographically-based "found poetry engine."  It is hoped that the tone of these anonymous reflections, dutifully recorded by the volunteer census takers with a fair dollop of whimsy, will invite the user to imagine positive recollections of nature, community, and Central Park itself. 
 
 ## API and Data Sample
 
@@ -30,17 +30,15 @@ LINK HERE: https://wireframe.cc/pro/pp/0126f4a23358513
 ### MVP/PostMVP
 
 #### MVP 
-- Fetch, sanitize, and display random stories from API JSON data through a clickable button
-- Display contextual information in an icon bar: date of entry, toggle between lluminating either a day or moon icon to indicate, AM or PM shift
+- Fetch, format-sanitize, and display random stories from API JSON data through a clickable button
+- Display contextual information in an icon bar: date of entry, toggle icons indicating AM or PM census shifts
 - Mobile design styling of at least one Media Query
 
 #### PostMVP  
 
 - CSS Grid will overlay the map and illuminate the relevant hectare mentioned in the story - COMPLETE
-- Advanced animations to "slow down" UX of the app, like a scroll-out of main story display.  Icon Bar and Generate Button will sit on top of one another - on click, these divs will part to create the display space. - SEMI COMPLETE
-- Staggered fade-in or typewriter effect of text rendering to story display space - COMPLETE
+- Advanced animations to "slow down" UX of the app, like a scroll-out of main story display, or "paced printing" of story readout.  Icon Bar and Generate Button will sit on top of one another - on click, these divs will part to create the display space. - SEMI COMPLETE
 - Click a hectare to search for stories from that sector - COMPLETE
-
 
 ## Project Schedule
 
@@ -80,11 +78,12 @@ Throughout your project, keep track of your Time Invested and Actual Time and up
 ## Code Snippet
 
 The is my attempt at "micro choreographing" the animated fade ins of each *line* of text, followed by smooth scrolling transitions,
-and a final "reveal" of the map.  A waiting cursor runs during this time.
+and a final "reveal" of the map.  A waiting cursor runs during this time.  
 
-THe code works in the context of a function running on a 500ms window set by setInterval.  An index i =0 is introduced outside
-the scope of the setInterval function.  On each iteration of setInterval, a line of text is rendered and i is incremented, until all 
-lines are rendered (i == storyArea.children.length) at which point the map is "revealed" but the cycle is allowed to continue once more. On that next cycle (storyArea.children.length + 1) the waiting cursor defaults back and the setInterval functions TURNS ITSELF OFF, which I think is cool.
+The code works in the context of a setInterval callback function running on a 500ms interval.  
+An index i = 0 is introduced outside the scope of the setInterval function.
+On each iteration of setInterval, a line of text is rendered and i is incremented, until all 
+lines are rendered (i == storyArea.children.length) at which point the map is "revealed." On the next cycle (storyArea.children.length + 1) the waiting cursor is unset and clearInterval is called as clean-up.  
 
 ```
 function fade() {
@@ -105,14 +104,13 @@ function fade() {
       mapView.style.opacity = 1
       i++
     } else {
-      console.log(`${storyArea.children[i]} at index ${i} of ${storyArea.children.length}`)
       storyArea.children[i].classList.remove('hiddenText')
       i++
     }
   }, 500)
 }
 ```
-Lines 2 and 3 create the dynamic HTML and append to DOM, respectively.
+
 
 ## Change Log
  -NEW BRANCH "DirtyAvenue" - building a "off-page" horizontal scroller version of project featuring large, full size map
@@ -136,6 +134,6 @@ Lines 2 and 3 create the dynamic HTML and append to DOM, respectively.
 
  ## Optimizations
  - REFACTOR JS querySelectors w/ HTML for cleaner syntactic selection - esp. map-view should be an ID
- - Hit the API only ONCE, on page load - DONE !!
+ - Hit the API *only ONCE*, on page load - DONE !!
  - Re-assign dv #map-view as a class to free up CSS specificity for style override - DONE
  - DRY generation of grid items in renderMap switch statements - DONE
