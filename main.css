@@ -112,6 +112,7 @@ i.activated {
 
 button:hover {
   cursor: pointer;
+  border-color: #46bb29;
 }
 
 button {
@@ -120,7 +121,7 @@ button {
   border: .3em groove #b2b2b2;
   margin: .15em 0;
   border-radius: .5em;
-  padding: .3em;
+  padding: .5em;
   font-size: 14px;
 }
 #story-area {
