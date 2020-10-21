@@ -1,5 +1,5 @@
 
-const apiData = 'https://data.cityofnewyork.us/resource/gfqj-f768.json'
+
 
 
 const storyArea = document.querySelector('#story-area')
