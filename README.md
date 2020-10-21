@@ -71,7 +71,7 @@ Throughout your project, keep track of your Time Invested and Actual Time and up
 | Flavor text + footer | M | 1.5 hrs | 1.5 hrs |
 | Mobile | L | 1.5 hrs |  8 hrs |
 | Hectare-based Search| M | 1hr15 | 3.5 hrs |
-| Research |  | ?  | 8 hr
+
 
 | Total | | 27.5 hrs| 43 hrs
 
