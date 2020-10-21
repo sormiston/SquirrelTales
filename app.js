@@ -1,6 +1,6 @@
 
 const apiData = 'https://data.cityofnewyork.us/resource/gfqj-f768.json'
-const appToken = '?$$app_token=RTFA3QYjhVZiI8te2yXCX8P4q'
+
 
 const storyArea = document.querySelector('#story-area')
 const storyDash = document.querySelector('main')
