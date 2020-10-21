@@ -59,21 +59,21 @@ LINK --    https://git.generalassemb.ly/SeanOrmiston/SquirrelTales/blob/master/p
 
 Throughout your project, keep track of your Time Invested and Actual Time and update your README regularly.
 
-| Component | Priority | Estimated Time | Time Invested | Actual Time |
-| --- | :---: |  :---: | :---: | :---: |
-| HTML Mockup | H | 1.5 hrs | 1.5 hr |
-| Working with API | H | 3 hrs | 3.5 hrs
-| Basic Story Display | H | 3 hrs | 4 hrs
-| Map: JS+Grid integration | H | 6 hrs | 5 hr
-| Basic CSS | L | 3 hrs | 2 hrs
-| Map: DOM integration | H | 5 hrs | 4 hr
-| Adv. Styling | M | 6 hrs | 4 hrs
-| Flavor text + footer | M | 1.5 hrs
-| Mobile | L | 1.5 hrs | 1.25 hr
-| Hectare-based Search| M | 1hr15 | 2hr 
+| Component | Priority | Estimated Time |  Actual Time |
+| --- | :---: |  :---: | :---: |
+| HTML Mockup | H | 1.5 hrs | 2 hrs |
+| Working with API | H | 3 hrs |  2 hrs |
+| Basic Story Display | H | 3 hrs | 8 hrs |
+| Map: JS+Grid integration | H | 6 hrs | 5 hrs |
+| Basic CSS | L | 3 hrs | 3 hrs |
+| Map: DOM integration | H | 5 hrs |  4 hrs |
+| Adv. Styling | M | 6 hrs |  6 hrs |
+| Flavor text + footer | M | 1.5 hrs | 1.5 hrs |
+| Mobile | L | 1.5 hrs |  8 hrs |
+| Hectare-based Search| M | 1hr15 | 3.5 hrs |
 | Research |  | ?  | 8 hr
 
-| Total | | 27.5 hrs| 21.5 hrs
+| Total | | 27.5 hrs| 43 hrs
 
 ## Code Snippet
 
