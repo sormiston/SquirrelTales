@@ -48,16 +48,47 @@ generateGrid(n - 1, n + 1, m - 1, m + 1)
  
  ### :bulb:  Solution:
  :map:  The first issue to address is repositioning the map image within its viewport to expose the right area of Central Park.
- We can do this by setting X and Y offsets to the image's background position.  This ternary logic provides override adustments where an edge column or edge row is selected.
+ We can do this by setting X and Y offsets to the image's background position.  This ternary logic provides override adustments in case an edge column or edge row is selected.
  
- ```function mapOffset(nCol, nRow) {
+ ```
+ function mapOffset(nCol, nRow) {
   // note the special default case if last column - 42 - is selected 
   const nXOffset = (nCol !== 42) ? -(((nCol >= 2 ? nCol : 2) - 2) * 100) : -((nCol - 3) * 100) 
   const nYOffset = -(((nRow >= 2 ? nRow : 2 )- 2) * 100)
   mapView.style.backgroundPosition = `${nXOffset}px ${nYOffset}px`
 }
 ```
+
+Now that the image is correct, the correct 3x3 grid to extrapolate from a given hectare selection will be determined by a control flow statement.  The final else block is the "normal" behavior, which is triggered in 7*40 / 9*42 of cases, or 74% of the time.
  
+ ```
+ function determineEnvirons(nCol, nRow) {
+  console.log(oSelected.hectare)
+  if (nCol === 1) {
+    if (nRow === 0) {
+      generateGrid(nCol, nCol + 2, nRow, nRow + 2)
+    } else if (nRow === 8) {
+      generateGrid(nCol, nCol + 2, nRow - 2, nRow)
+    } else {
+      generateGrid(nCol, nCol + 2, nRow - 1, nRow + 1)
+    }
+  } else if (nCol === 42) {
+    if (nRow === 0) {
+      generateGrid(nCol - 2, nCol, nRow, nRow + 2)
+    } else if (nRow === 8) {
+      generateGrid(nCol - 2, nCol, nRow - 2, nRow)
+    } else {
+      generateGrid(nCol - 2, nCol, nRow - 1 , nRow + 1)
+    }
+  } else if (nRow === 0) {
+    generateGrid(nCol - 1, nCol + 1, nRow, nRow + 2)
+  } else if (nRow === 8) {
+    generateGrid(nCol - 1, nCol + 1, nRow - 2, nRow)
+  } else {
+    generateGrid(nCol - 1, nCol + 1, nRow - 1, nRow + 1)
+  }
+}
+```
  
  
  
