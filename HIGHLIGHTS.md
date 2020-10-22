@@ -2,7 +2,7 @@
 
 ### :memo: This space was created Oct 21, 2020, to reflect on the engineering challenges of SquirrelTales :memo:
 
-### :triangular_flag_on_post: Challenge: Make the .PNG map an interactive element, with clickable surfaces that fetch new, geographically refined data queries
+### :triangular_flag_on_post: Challenge: Make the .PNG map an interactive element, with clickable surfaces that fetch new story data scoped to the hectare of the selected space
 
 ### :mag: Situational Detail: 
 :pushpin:  The map is a .png file intended by design to "break out" of usual viewport dimensions by being fixed at 4200px width and 900px height.  
