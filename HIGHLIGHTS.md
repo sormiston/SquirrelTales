@@ -2,7 +2,7 @@
 
 ### This space was created Oct 21, 2020, to reflect on the engineering challenges of SquirrelTales :memo:
 
-1. ### :triangular_flag_on_post: Challenge: Make the .PNG map an interactive element, with clickable surfaces that fetch new, geographically refined data queries
+### :triangular_flag_on_post: Challenge: Make the .PNG map an interactive element, with clickable surfaces that fetch new, geographically refined data queries
 
 ### :mag: Situational Detail: 
 :pushpin:  The map is a .png file intended by design to "break out" of usual viewport dimensions by being fixed at 4200px width and 900px height.  
@@ -31,17 +31,21 @@ The clicklable div elements will then be appended to the parent DOM and organize
   }
 }
 ```
-1. ### :triangular_flag_on_post: Challenge: the default map display on mobile screens is a 3 x 3 grid excerpt of the big map, depicting the selected hectare in the center.  Alter this rule to prevent generating "off-map" hectares when the selected hectare lies on an edge or corner of the map.
+### :triangular_flag_on_post: Challenge: the default map display on mobile screens is a 3 x 3 grid excerpt of the big map, depicting the selected hectare in the center.  Alter this rule to prevent generating "off-map" hectares when the selected hectare lies on an edge or corner of the map.
 
 ### :mag: Situation:
-The above "generateGrid" function takes 4 arguments to know column start/end and row start/end, similiarly to the CSS Grid pattern.  It is simple to implement this to generate 3x3 grids as needed where a selected hectare is center -- if you imagine the selected hectare with coordinates (n, m) in the center, the column to its left will be n - 1 and the column to its right will be n + 1.  
+The above "generateGrid" function takes 4 arguments to know column start/end and row start/end, similiarly to the CSS Grid pattern.  It is simple to implement this to generate 3x3 grids where a selected hectare occupies the center space.  If you imagine the selected hectare with coordinates (n, m) in the center, the column to its left will be n - 1 and the column to its right will be n + 1.  
 
 ```
 generateGrid(n - 1, n + 1, m - 1, m + 1)
  ```
  ![3x3 map grid](https://i.imgur.com/QjeQ9iD.png)
  
- However, 
+ However, for good UX, we want to avoid rendering spaces that don't exist on the map. This means we have to adjust the offset for all cases where the selected hectare lies on an edge or corner.  In these cases (quite *literally* **edge cases**) the offset should be adjusted to render a 3x3 grid one space "inland" on the map.
+ 
+ ![3x3 map grid2](https://i.imgur.com/BfZ724R.png)
+ 
+ 
  
  
  
