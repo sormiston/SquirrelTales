@@ -41,7 +41,7 @@ generateGrid(n - 1, n + 1, m - 1, m + 1)
  ```
  ![3x3 map grid](https://i.imgur.com/QjeQ9iD.png)
  
- However, for good UX, we want to avoid rendering spaces that don't exist on the map. This means we have to adjust the offset for all cases where the selected hectare lies on an edge or corner.  In these cases (quite *literally* **edge cases**) the offset should be adjusted to render a 3x3 grid one space "inland" on the map.
+ However, for good UX, we want to avoid rendering spaces that don't exist on the map. This means we have to adjust the offset for all cases where the selected hectare lies on an edge or corner.  In these cases (quite *literally* **edge cases**) the offset should be so that hectares 1B, 1A, and 2C (the left hand corner) will render the same way as if 2B was the selected center.
  
  ![3x3 map grid2](https://i.imgur.com/BfZ724R.png)
  
