@@ -5,10 +5,10 @@
 ### :triangular_flag_on_post: Challenge: Make the .PNG map an interactive element, with clickable surfaces that fetch new story data scoped to the hectare of the selected space
 
 ### :mag: Situational Detail: 
-:pushpin:  The map is a .png file intended by design to "break out" of usual viewport dimensions by being fixed at 4200px width and 900px height.  
-:pushpin:  The map .png image includes grid-lines (embedded in the image) to show the division of Central Park by hectare.  
-:pushpin:   Hectares are identified on the map and in the corresponding JSON file according to XY coordinates, where X in range \[1, 42], Y in range \[A,J], and JSON values schematized as nnA (n = number, A = alphabetical, ex. 01A).  
-:white_check_mark:   The objective UX is to allow the user to click a hectare and fetch a random story scoped to that selected hectare, even though there is no interactivity presented by the static .png image. 
+:pushpin:--The map is a .png file intended by design to "break out" of usual viewport dimensions by being fixed at 4200px width and 900px height.  
+:pushpin:--The map .png image includes grid-lines (embedded in the image) to show the division of Central Park by hectare.  
+:pushpin:--Hectares are identified on the map and in the corresponding JSON file according to XY coordinates, where X in range \[1, 42], Y in range \[A,J], and JSON values schematized as nnA (n = number, A = alphabetical, ex. 01A).  
+:white_check_mark:--The objective UX is to allow the user to click a hectare and fetch a random story scoped to that selected hectare, even though there is no interactivity presented by the static .png image. 
 
 ### :bulb: Solution:
 - [x] Javascript should generate a matrix of div elements, associating an onClick event listener and unique id label to each at creation time.  
