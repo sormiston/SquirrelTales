@@ -59,32 +59,32 @@ generateGrid(n - 1, n + 1, m - 1, m + 1)
 }
 ```
 
-Now that the image is correct, the correct 3x3 grid to extrapolate from a given hectare selection will be determined by a control flow statement.  The final else block is the "default" behavior where the selected hectare is centered with a tile on each side including diagonals.  
+Now that the image is correct, the correct 3x3 grid to extrapolate from a given hectare selection will be determined by a control flow statement.  The starting and ending values for the grid matrices are transposed back from the corners and edges, depending on the selected hectare's location (either on an edge, or a corner.)  The final else block is the "default" behavior where the selected hectare is centered with a tile on each side including diagonals.  
  
  ```
  function determineEnvirons(nCol, nRow) {
-  if (nCol === 1) { // Column "01"
-    if (nRow === 0) {  // ...plus Row "A", or, the top right corner
+  if (nCol === 1) {                                         // First (left) column
+    if (nRow === 0) {                                       // ...top left-corner
       generateGrid(nCol, nCol + 2, nRow, nRow + 2)
-    } else if (nRow === 8) {  
+    } else if (nRow === 8) {                               // ...bottom left-corner
       generateGrid(nCol, nCol + 2, nRow - 2, nRow)
     } else {
-      generateGrid(nCol, nCol + 2, nRow - 1, nRow + 1)
+      generateGrid(nCol, nCol + 2, nRow - 1, nRow + 1)    // left-side edge cases that are not corners
     }
-  } else if (nCol === 42) {
-    if (nRow === 0) {
+  } else if (nCol === 42) {                               // Last (right) column
+    if (nRow === 0) {                                     // top-right corner
       generateGrid(nCol - 2, nCol, nRow, nRow + 2)
-    } else if (nRow === 8) {
+    } else if (nRow === 8) {                              // bottom-right corner
       generateGrid(nCol - 2, nCol, nRow - 2, nRow)
-    } else {
+    } else {                                              // right-side edge cases that are not corners
       generateGrid(nCol - 2, nCol, nRow - 1 , nRow + 1)
     }
-  } else if (nRow === 0) {
+  } else if (nRow === 0) {                                // top edge cases
     generateGrid(nCol - 1, nCol + 1, nRow, nRow + 2)
-  } else if (nRow === 8) {
+  } else if (nRow === 8) {                                // bottom edge cases
     generateGrid(nCol - 1, nCol + 1, nRow - 2, nRow)
   } else {
-    generateGrid(nCol - 1, nCol + 1, nRow - 1, nRow + 1)
+    generateGrid(nCol - 1, nCol + 1, nRow - 1, nRow + 1)  // default: selected hectare in center bounded on all sides incl. diagonals by other map tiles
   }
 }
 ```
