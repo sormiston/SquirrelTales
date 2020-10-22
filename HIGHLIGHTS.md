@@ -17,7 +17,8 @@
 
 - [x] The clicklable div elements will then be appended to the parent DOM and organized into their exact places above the correct hectares on the map by a CSS Grid overlay.  The fit between the clickable div space and the space described by the map grid lines should be perfect.  To enable this, CSS rules give each div Grid row and column values of 1fr x 1fr, while the grid parent's dimensions run 42fr x 9fr.  
 
-```function generateGrid(colStart: number, colEnd: number, rowStart: number, rowEnd:number) {
+```
+function generateGrid(colStart: number, colEnd: number, rowStart: number, rowEnd:number) {
   for (let i = rowStart; i <= rowEnd; i++) {
     for (let j = colStart; j <= colEnd; j++) {
       let newDiv = document.createElement('div')
