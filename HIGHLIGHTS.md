@@ -59,15 +59,14 @@ generateGrid(n - 1, n + 1, m - 1, m + 1)
 }
 ```
 
-Now that the image is correct, the correct 3x3 grid to extrapolate from a given hectare selection will be determined by a control flow statement.  The final else block is the "normal" behavior, which is triggered in 7*40 / 9*42 of cases, or 74% of the time.
+Now that the image is correct, the correct 3x3 grid to extrapolate from a given hectare selection will be determined by a control flow statement.  The final else block is the "default" behavior where the selected hectare is centered with a tile on each side including diagonals.  
  
  ```
  function determineEnvirons(nCol, nRow) {
-  console.log(oSelected.hectare)
-  if (nCol === 1) {
-    if (nRow === 0) {
+  if (nCol === 1) { // Column "01"
+    if (nRow === 0) {  // ...plus Row "A", or, the top right corner
       generateGrid(nCol, nCol + 2, nRow, nRow + 2)
-    } else if (nRow === 8) {
+    } else if (nRow === 8) {  
       generateGrid(nCol, nCol + 2, nRow - 2, nRow)
     } else {
       generateGrid(nCol, nCol + 2, nRow - 1, nRow + 1)
