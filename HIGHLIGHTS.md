@@ -4,7 +4,7 @@
 
 #### :triangular_flag_on_post: Challenge: Make the hectares of the .PNG map image into interactive links that fetch data with the selected hectare's id as a query parameter
 
-#### :bulb: Solution: Dynamically generate a matrix of <div> elements
+#### :bulb: Solution: Dynamically generate a matrix of \<div> elements
 
 
 
