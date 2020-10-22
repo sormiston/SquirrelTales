@@ -2,7 +2,7 @@
 
 ### This space was created Oct 21, 2020, to reflect on the engineering challenges of SquirrelTales :memo:
 
-### :triangular_flag_on_post: Challenge: Make the .PNG map an interactive element, with clickable surfaces that fetch new, geographically refined data queries
+### 1. :triangular_flag_on_post: Challenge: Make the .PNG map an interactive element, with clickable surfaces that fetch new, geographically refined data queries
 
 ### :mag: Situational Detail: 
 :pushpin:  The map is a .png file intended by design to "break out" of usual viewport dimensions by being fixed at 4200px width and 900px height.  
@@ -31,7 +31,7 @@ The clicklable div elements will then be appended to the parent DOM and organize
   }
 }
 ```
-#### :triangular_flag_on_post: Challenge: the default map display on mobile screens is a 3 x 3 grid excerpt of the big map, depicting the selected hectare in the center.  Alter this rule to prevent generating "off-map" hectares when the selected hectare lies on an edge or corner of the map.
+#### 1. :triangular_flag_on_post: Challenge: the default map display on mobile screens is a 3 x 3 grid excerpt of the big map, depicting the selected hectare in the center.  Alter this rule to prevent generating "off-map" hectares when the selected hectare lies on an edge or corner of the map.
 
 ### :mag: Situation:
 The above "generateGrid" function takes 4 arguments to know column start/end and row start/end, similiarly to the CSS Grid pattern.  It is simple to implement this to generate 3x3 grids as needed where a selected hectare is center -- if you imagine the selected hectare with coordinates (n, m) in the center, the column to its left will be n - 1 and the column to its right will be n + 1.  
