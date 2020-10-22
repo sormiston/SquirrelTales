@@ -30,7 +30,8 @@ These divs will then be appended to the parent DOM element aliased as mapView.  
 ### :mag: Situation:
 The above "generateGrid" function takes 4 arguments to know column start/end and row start/end, similiarly to the CSS Grid pattern.  It is simple to implement this to generate 3x3 grids as needed where a selected hectare is center -- if you imagine the selected hectare with coordinates (n, m) in the center, the column to its left will be n - 1 and the column to its right will be n + 1.  
 
-```generateGrid(n - 1, n + 1, m - 1, m + 1)
+```
+generateGrid(n - 1, n + 1, m - 1, m + 1)
  ```
  
  This generates:
