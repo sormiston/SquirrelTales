@@ -11,11 +11,11 @@
 :white_check_mark:   The objective UX is to allow the user to click a hectare and fetch a random story scoped to that selected hectare, even though there is no interactivity presented by the static .png image. 
 
 ### :bulb: Solution:
-Javascript should generate a matrix of div elements, associating an onClick event listener and unique id label to each at creation time.  
+- [x] Javascript should generate a matrix of div elements, associating an onClick event listener and unique id label to each at creation time.  
 
-Each unique id label will be created dynamically to denote that divs coordinate info, and should be a string coinciding exactly with the corresponding values in the JSON data, to facilitate retrieval.
+- [x] Each unique id label will be created dynamically to denote that divs coordinate info, and should be a string coinciding exactly with the corresponding values in the JSON data, to facilitate retrieval.
 
-The clicklable div elements will then be appended to the parent DOM and organized into their exact places above the correct hectares on the map by a CSS Grid overlay.  The fit between the clickable div space and the space described by the map grid lines should be perfect.  To enable this, CSS rules give each div Grid row and column values of 1fr x 1fr, while the grid parent's dimensions run 42fr x 9fr.  
+- [x] The clicklable div elements will then be appended to the parent DOM and organized into their exact places above the correct hectares on the map by a CSS Grid overlay.  The fit between the clickable div space and the space described by the map grid lines should be perfect.  To enable this, CSS rules give each div Grid row and column values of 1fr x 1fr, while the grid parent's dimensions run 42fr x 9fr.  
 
 ```function generateGrid(colStart: number, colEnd: number, rowStart: number, rowEnd:number) {
   for (let i = rowStart; i <= rowEnd; i++) {
