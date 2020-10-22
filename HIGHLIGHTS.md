@@ -1,6 +1,6 @@
 ## :fire: Code Snippet Highlights :fire:
 
-### This space was created Oct 21, 2020, to reflect on the engineering challenges of SquirrelTales :memo:
+### :memo: This space was created Oct 21, 2020, to reflect on the engineering challenges of SquirrelTales :memo:
 
 ### :triangular_flag_on_post: Challenge: Make the .PNG map an interactive element, with clickable surfaces that fetch new, geographically refined data queries
 
@@ -31,20 +31,32 @@
   }
 }
 ```
-### :triangular_flag_on_post: Challenge: the default map display on mobile screens is a 3 x 3 grid excerpt of the big map, depicting the selected hectare in the center.  Alter this rule to prevent generating "off-map" hectares when the selected hectare lies on an edge or corner of the map.
+### :triangular_flag_on_post: Challenge: the default map display on mobile screens is a 3 x 3 grid "excerpt" of the big map, showing the selected tile surrounded by its surrounding tiles.  Alter this rule to prevent generating "off-map" hectares when the selected hectare lies on an edge or corner of the map.
 
-### :mag: Situation:
-The above "generateGrid" function takes 4 arguments to know column start/end and row start/end, similiarly to the CSS Grid pattern.  It is simple to implement this to generate 3x3 grids where a selected hectare occupies the center space.  If you imagine the selected hectare with coordinates (n, m) in the center, the column to its left will be n - 1 and the column to its right will be n + 1.  
+### :mag: Situational Detail:
+:pushpin:  The above "generateGrid" function takes 4 arguments to know column start/end and row start/end, similiarly to the CSS Grid pattern.  
+:pushpin:  It is simple to implement this to generate 3x3 grids where a selected hectare occupies the center space.  If you imagine the selected hectare with coordinates (n, m) in the center, the column to its left will be n - 1 and the column to its right will be n + 1.  
 
 ```
 generateGrid(n - 1, n + 1, m - 1, m + 1)
  ```
  ![3x3 map grid](https://i.imgur.com/QjeQ9iD.png)
  
- However, for good UX, we want to avoid rendering spaces that don't exist on the map. This means we have to adjust the offset for all cases where the selected hectare lies on an edge or corner.  In these cases (quite *literally* **edge cases**) the offset should be so that hectares 1B, 1A, and 2C (the left hand corner) will render the same way as if 2B was the selected center.
+ :white_check_mark:  However, for good UX, we want to avoid rendering spaces that don't exist on the map. This means we have to adjust the offset for all cases where the selected hectare lies on an edge or corner.  In these cases (quite *literally* **edge cases**) the offset should be so that selecting hectares 01B, 01A, or 02C (the left hand corner) will render the same way as if 02B was the selected center.
  
  ![3x3 map grid2](https://i.imgur.com/BfZ724R.png)
  
+ ### :bulb:  Solution:
+ :map:  The first issue to address is repositioning the map image within its viewport to expose the right area of Central Park.
+ We can do this by setting X and Y offsets to the image's background position.  This ternary logic provides override adustments where an edge column or edge row is selected.
+ 
+ ```function mapOffset(nCol, nRow) {
+  // note the special default case if last column - 42 - is selected 
+  const nXOffset = (nCol !== 42) ? -(((nCol >= 2 ? nCol : 2) - 2) * 100) : -((nCol - 3) * 100) 
+  const nYOffset = -(((nRow >= 2 ? nRow : 2 )- 2) * 100)
+  mapView.style.backgroundPosition = `${nXOffset}px ${nYOffset}px`
+}
+```
  
  
  
