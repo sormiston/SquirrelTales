@@ -2,13 +2,16 @@
 
 ### This space was created Oct 21, 2020, to reflect on the engineering challenges of SquirrelTales :memo:
 
-#### :triangular_flag_on_post: Challenge: Make the .PNG map an interactive element, with clickable surfaces resulting in new data queries
+### :triangular_flag_on_post: Challenge: Make the .PNG map an interactive element, with clickable surfaces resulting in new data queries
 
-### :mag: Situation: 
-The map is a .png file intended by design to "break out" of usual viewport dimensions by being fixed at 4200px width and 900px height.  Intrinsic to the original image, it is divided by grid system into hectares.  The hectares are identified on the map and in the corresponding JSON file according to XY coordinates, where X in range \[1, 42], Y in range \[A,J], and data formatted as nnA (n = number, A = alphabetical, ex. 01A).  The objective UX is to allow the user to fetch a random story scoped to the selected hectare, even though there is no real interactivity associated with the static .png image. 
+### :mag: Situational Detail: 
+:pushpin: The map is a .png file intended by design to "break out" of usual viewport dimensions by being fixed at 4200px width and 900px height.  
+:pushpin: The map .png image includes grid-lines (embedded in the image) to show the division of Central Park by hectare.  
+:pushpin:The hectares are identified on the map and in the corresponding JSON file according to XY coordinates, where X in range \[1, 42], Y in range \[A,J], and JSON values schematized as nnA (n = number, A = alphabetical, ex. 01A).  
+:white_check_mark: The objective UX is to allow the user to click a hectare and fetch a random story scoped to that selected hectare, even though there is no interactivity presented by the static .png image. 
 
-#### :bulb: Solution:
-Javascript should generate a matrix of elements, associating an onClick event listener and unique id label for each one at creation time.  The unique id label will have to be created dynamically, based on the indices of the loops generating the grid matrix, and as should coincide exactly with the correspoding hectare key values present in the JSON data, to streamline retrieval.
+### :bulb: Solution:
+Javascript should generate a matrix of elements, associating an onClick event listener and unique id label to each at creation time.  Each unique id label will have to be created dynamically, provided by the indices of the loops generating the grid matrix, and they should coincide exactly with the correspoding hectare key values present in the JSON data to facilitate retrieval.
 These divs will then be appended to the parent DOM element aliased as mapView.  There, they will be organized into their exact place on a CSS Grid overlay, where they will line up against the intrinsic image grid lines on the image below to a perfect fit.  To enable this, the divs will be given Grid row and column values of 1fr x 1fr in the context of a 42fr x 9fr parent grid.  
 
 ```function generateGrid(colStart: number, colEnd: number, rowStart: number, rowEnd:number) {
@@ -33,9 +36,9 @@ The above "generateGrid" function takes 4 arguments to know column start/end and
 ```
 generateGrid(n - 1, n + 1, m - 1, m + 1)
  ```
- 
- This generates:
  ![3x3 map grid](https://i.imgur.com/QjeQ9iD.png)
+ 
+ However, 
  
  
  
