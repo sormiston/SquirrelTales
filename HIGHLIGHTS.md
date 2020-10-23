@@ -13,7 +13,7 @@
 ### :bulb: Solution:
 - [x] Javascript should generate a matrix of div elements, associating an onClick event listener and unique id label to each at creation time.  
 
-- [x] Each unique id label will be created dynamically to denote that divs coordinate info, and should be a string coinciding exactly with the corresponding values in the JSON data, to facilitate retrieval.
+- [x] Each id label will be unique and created dynamically to represent the map coordinate info associated with the clickable div surface.  The coordinate string will be passed to the click event handler.  The label should be a string coinciding exactly with the corresponding values in the JSON data, to facilitate retrieval. 
 
 - [x] The clicklable div elements will then be appended to the parent DOM and organized into their exact places above the correct hectares on the map by a CSS Grid overlay.  The fit between the clickable div space and the space described by the map grid lines should be perfect.  To enable this, CSS rules give each div Grid row and column values of 1fr x 1fr, while the grid parent's dimensions run 42fr x 9fr.  
 
